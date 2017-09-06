@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Boombox</title>
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title>Boombox</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-	<h1>H</h1>
+    <h1>HIGH DEFINITION</h1>
 
-	<canvas id="canvas"></canvas>
+    <div class="boom-container">
+    	<input type="file" id="input"></input>
+		<audio id="audio-player" controls></audio>
+	    <canvas id="canvas"></canvas>
 
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.min.js"/>
+	</div>
+
+
 	<script>
-		// 	console.log('stuf');
-		// var renderer = new THREE.WebGLRenderer();
-		// document.appendChild( renderer.domElement )
-
-	</script> -->
-
-	<script src="./app/js/bundle.js"></script>
+	  var div = document.createElement('div');
+	  return ('draggable' in div) || ('ondragstart' in div && 'ondrop' in div);
+	</script>
+    <script src="./app/js/bundle.js"></script>
 </body>
+
 </html>

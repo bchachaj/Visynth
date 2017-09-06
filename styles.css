@@ -1,0 +1,26 @@
+body {
+  background: black;
+  overflow: hidden;
+  font-family: sans-serif;
+  background: lime;
+}
+
+h1 {
+  color: maroon;
+}
+
+
+.box__dragndrop,
+.box__uploading,
+.box__success,
+.box__error {
+  display: none;
+}
+
+
+.audio-player {
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	z-index: 999;
+}

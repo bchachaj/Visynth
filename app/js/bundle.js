@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,94 +71,23 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three__ = __webpack_require__(1);
-
-
-let scene, camera, renderer;
-let geometry, material, mesh;
-
-scene = new __WEBPACK_IMPORTED_MODULE_0_three__["a" /* Scene */]();
-  camera = new __WEBPACK_IMPORTED_MODULE_0_three__["b" /* PerspectiveCamera */]( 75, window.innerWidth / window.innerHeight, 1, 10000);
-  camera.position.z = 1000;
-
-  geometry = new __WEBPACK_IMPORTED_MODULE_0_three__["c" /* BoxGeometry */]( 200, 200, 200 );
-  material = new __WEBPACK_IMPORTED_MODULE_0_three__["d" /* MeshBasicMaterial */]( { color: 0xff0000, wireframe: false });
-
-  mesh = new __WEBPACK_IMPORTED_MODULE_0_three__["e" /* Mesh */]( geometry, material );
-
-  scene.add(mesh);
-
-
-
-renderer = new __WEBPACK_IMPORTED_MODULE_0_three__["f" /* WebGLRenderer */]({canvas: document.getElementById('canvas')});
-
-renderer.setSize( window.innerWidth, window.innerHeight );
-
-// requestAnimationFrame( animate );
-//
-//     mesh.rotation.x += 0.01;
-//     mesh.rotation.y += 0.02;
-//
-// renderer.render(scene, camera);
-
-
-// function init() {
-//   scene = new THREE.Scene();
-//   camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000);
-//   camera.position.z = 1000;
-//
-//   geometry = new THREE.BoxGeometry( 200, 200, 200 );
-//   material = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true });
-//
-//   mesh = new THREE.Mesh( geometry, material );
-//
-//   scene.add(mesh);
-//
-//   renderer = new THREE.WebGLRenderer();
-//
-//   renderer.setSize( window.innerWidth, window.innerHeight );
-//
-//   document.body.appendChild( renderer.domElement );
-//
-//
-// }
-//
-//
-function animate() {
-    requestAnimationFrame( animate );
-
-    mesh.rotation.x += 0.01;
-    mesh.rotation.y += 0.02;
-
-    renderer.render(scene, camera );
-}
-
-animate();
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* unused harmony export WebGLRenderTargetCube */
 /* unused harmony export WebGLRenderTarget */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return WebGLRenderer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WebGLRenderer; });
 /* unused harmony export ShaderLib */
 /* unused harmony export UniformsLib */
 /* unused harmony export UniformsUtils */
 /* unused harmony export ShaderChunk */
 /* unused harmony export FogExp2 */
 /* unused harmony export Fog */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Scene; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Scene; });
 /* unused harmony export LensFlare */
 /* unused harmony export Sprite */
 /* unused harmony export LOD */
 /* unused harmony export SkinnedMesh */
 /* unused harmony export Skeleton */
 /* unused harmony export Bone */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return Mesh; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return Mesh; });
 /* unused harmony export LineSegments */
 /* unused harmony export LineLoop */
 /* unused harmony export Line */
@@ -189,16 +118,16 @@ animate();
 /* unused harmony export AudioLoader */
 /* unused harmony export SpotLightShadow */
 /* unused harmony export SpotLight */
-/* unused harmony export PointLight */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return PointLight; });
 /* unused harmony export RectAreaLight */
 /* unused harmony export HemisphereLight */
 /* unused harmony export DirectionalLightShadow */
-/* unused harmony export DirectionalLight */
-/* unused harmony export AmbientLight */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return DirectionalLight; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return AmbientLight; });
 /* unused harmony export LightShadow */
 /* unused harmony export Light */
 /* unused harmony export StereoCamera */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return PerspectiveCamera; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return PerspectiveCamera; });
 /* unused harmony export OrthographicCamera */
 /* unused harmony export CubeCamera */
 /* unused harmony export ArrayCamera */
@@ -336,7 +265,7 @@ animate();
 /* unused harmony export CylinderBufferGeometry */
 /* unused harmony export CircleGeometry */
 /* unused harmony export CircleBufferGeometry */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return BoxGeometry; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return BoxGeometry; });
 /* unused harmony export BoxBufferGeometry */
 /* unused harmony export ShadowMaterial */
 /* unused harmony export SpriteMaterial */
@@ -348,10 +277,10 @@ animate();
 /* unused harmony export MeshPhongMaterial */
 /* unused harmony export MeshToonMaterial */
 /* unused harmony export MeshNormalMaterial */
-/* unused harmony export MeshLambertMaterial */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return MeshLambertMaterial; });
 /* unused harmony export MeshDepthMaterial */
 /* unused harmony export MeshDistanceMaterial */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return MeshBasicMaterial; });
+/* unused harmony export MeshBasicMaterial */
 /* unused harmony export LineDashedMaterial */
 /* unused harmony export LineBasicMaterial */
 /* unused harmony export Material */
@@ -44373,6 +44302,161 @@ function CanvasRenderer() {
 
 
 
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__audio__ = __webpack_require__(2);
+
+
+
+
+let scene, camera, renderer;
+let geometry, material, mesh;
+
+renderer = new __WEBPACK_IMPORTED_MODULE_0_three__["a" /* WebGLRenderer */]({canvas: document.getElementById('canvas')});
+
+renderer.setSize( window.innerWidth, window.innerHeight );
+
+renderer.setClearColor(0x00ff00);
+
+
+renderer.setPixelRatio(window.devicePixelRatio);
+
+  scene = new __WEBPACK_IMPORTED_MODULE_0_three__["b" /* Scene */]();
+
+
+  camera = new __WEBPACK_IMPORTED_MODULE_0_three__["c" /* PerspectiveCamera */]( 75, window.innerWidth / window.innerHeight, 1, 8000);
+  camera.position.z = 50;
+
+  geometry = new __WEBPACK_IMPORTED_MODULE_0_three__["d" /* BoxGeometry */]( 100, 100, 100, 100 );
+
+  // geometry = new THREE.BufferGeometry();
+
+
+
+  material = new __WEBPACK_IMPORTED_MODULE_0_three__["e" /* MeshLambertMaterial */]( { color: 0xBADA55 } );
+
+  mesh = new __WEBPACK_IMPORTED_MODULE_0_three__["f" /* Mesh */]( geometry, material );
+  mesh.position.set(0,0, -1000)
+  scene.add(mesh);
+
+  var light = new __WEBPACK_IMPORTED_MODULE_0_three__["g" /* AmbientLight */](0xffffff, 0.5);
+  scene.add(light);
+
+  var pointLight = new __WEBPACK_IMPORTED_MODULE_0_three__["h" /* PointLight */](0xffffff, 0.5);
+  scene.add(pointLight);
+
+  var directLight = new __WEBPACK_IMPORTED_MODULE_0_three__["i" /* DirectionalLight */](0xffffff, 0.5);
+  scene.add(directLight)
+
+let audio = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__audio__["a" /* default */])();
+console.log(audio);
+  
+function animate() {
+    requestAnimationFrame( animate );
+
+    mesh.rotation.x += 0.01;
+    mesh.rotation.y += 0.02;
+
+    renderer.render(scene, camera );
+}
+
+animate();
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// var audio = new Audio();
+
+// audio.src = 'data/filler.mp3';
+// audio.controls = true;
+// audio.autoplay = true;
+// audio.loop = true;
+
+
+// take in audio
+
+const fileUpload = () => {
+
+	console.log('conn');
+
+input.onchange = function(e) {
+	debugger;
+	var sound = document.getElementById('audio-player');
+	sound.src = URL.createObjectURL(this.files[0]);
+
+//revoking the blobURI when you don't need it 
+	sound.onend = function(e) {
+		URL.revokeObjectURL(this.src);
+	}
+}
+var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+var analyser = audioCtx.createAnalyser();
+
+console.log(audioCtx);
+console.log(analyser);
+
+var bufferLength = analyser.frequencyBinCount;
+var dataArray = new Uint8Array(bufferLength);
+var c = analyser.getByteTimeDomainData(dataArray);
+
+return c;
+
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (fileUpload);
+//analyzer node 
+
+
+
+// //node is connect at some point between your source and your destination
+
+// source = audioCtx.createMediaStreamSource(stream);
+// source.connect(analyser);
+
+// analyser.connect(distortion);
+
+// distortion.connect(audioCtx.destination);
+
+// //will caption audio data in a certain frequency domain, depending of what is specified 
+// //in AnalyserNode.fftSize ( default is 2048 );
+
+
+
+// // specifiy a data array to be fed from the source
+
+
+// var bufferLength = analyser.frequencyBinCount;
+// var dataArray = new Uint8Array(bufferLength);
+// analyser.getByteTimeDomainData(dataArray);
+
+//array
+
+
+
+//different data averaging constants = AnalyserNode.smoothingTimeConstant;
+
+
+//Capture frequency data 
+
+// Analyser.getFloatFrequencyData() 
+
+
+
+
+
+
+
+
+//bottom of file
 
 /***/ })
 /******/ ]);
