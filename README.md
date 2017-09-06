@@ -1,4 +1,4 @@
-##JS Project Proposal: 3d Audio Visualization
+### JS Project Proposal: 3d Audio Visualization
 
    Working Title: Boombox
 ### Abstract
