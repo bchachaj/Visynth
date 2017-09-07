@@ -10,14 +10,13 @@
 		body {
 			display: flex;
 			/*background: black;*/
-			background: white;
+			background: #313a49;
 		}
 
     	canvas {
     		background: none;
         position: absolute;
         top: 0;
-        left: 0;
         z-index: -1;
     	}
     </style>
@@ -39,69 +38,8 @@
 	  return ('draggable' in div) || ('ondragstart' in div && 'ondrop' in div);
 	</script> -->
     <script src="./app/js/bundle.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.js"></script>
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.js"></script> -->
     <script>
-
-    let global;
-    // const canvas = document.getElementById('testing');
-    // let ctx = canvas.getContext('2d');
-
-    // window.onload = getAudio();
-
-  //   function getAudio() {
-  //       var context = new AudioContext();
-  //       var audio = document.getElementById('audio-player');
-  //       var audioSource = context.createMediaElementSource(audio);
-  //    // audioSource.crossOrigin = "anonymous";
-  //       var analyser = context.createAnalyser();
-  //       analyser.fftSize = 8192;
-  //       analyser.smoothingTimeConstant = 0.8;
-  //       audioSource.connect(analyser);
-  //       audioSource.connect(context.destination);
-
-  //       var frequencyData = new Uint8Array(analyser.frequencyBinCount);
-  //           console.log(analyser.frequencyBinCount);
-
-  //        ctx.clearRect(0,0,canvas.width, canvas.height);
-
-  //        var WIDTH = canvas.height;
-    // var HEIGHT = canvas.width;
-    // global = frequencyData;
-  //       function renderFrame() {
-  //           requestAnimationFrame(renderFrame);
-  //           // console.log(frequencyData)
-   //        analyser.getByteFrequencyData(frequencyData);
-
-   //        ctx.fillStyle = '#00CCFF';
-   //        bars = 100;
-   //        // console.log(frequencyData)
-
-  //        var width = Math.floor(1/frequencyData, 10);
-
-   //       ctx.clearRect(0,0,canvas.width, canvas.height);
-   //     for (let i = 0; i < analyser.frequencyBinCount; i++) {
-   //       let value = frequencyData[i];
-   //       var percent = value / 256;
-   //       height = HEIGHT * percent;
-   //       offset = HEIGHT - height - 1;
-
-   //       var bar_width = (WIDTH/(analyser.frequencyBinCount / 2));
-   //       ctx.fillStyle = 'white';
-   //       // let percent = value / 256;
-   //       ctx.fillRect(i * bar_width, offset, bar_width, height); 
-   //     }
-  //       }
-  //       // audio.play();
-  //       renderFrame();
-  //   };
-
-    // console.log(global);
-
-    // for(let j = 0; j < global.length; j++) {
-    //  console.log(global[j]);
-    // }
-    // console.log(renderer);
-
 
 	var WIDTH = 640;
 	var HEIGHT = 360;
