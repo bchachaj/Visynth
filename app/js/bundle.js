@@ -44320,6 +44320,7 @@ window.onload = () => {
   // let viz = new Visualizer();
   let viz  =  new Visualizer();
   viz.initialize();
+  viz.createObjects();
 };
 
 
@@ -44332,16 +44333,16 @@ function Visualizer() {
   //set some constants
 
   //(at this time) arbitrary number of bars
-  // this.objNum = 60;
+  this.objNum = 60;
 
   // //store 3d objects to be manipulated 
-  // this.objArray = new Array();
+  this.objArray = new Array();
 
   // // body...
-  // this.scene;
-  // this.camera; 
-  // this.renderer;
-  // this.controls;
+  this.scene;
+  this.camera; 
+  this.renderer;
+  this.controls;
 
 }
 
@@ -44349,20 +44350,25 @@ Visualizer.prototype.initialize = function(){
  let scene, camera, renderer;
   let geometry, material, mesh;
 
+  let HEIGHT = window.innerHeight;
+  let WIDTH = window.innerWidth;
+
   renderer = new __WEBPACK_IMPORTED_MODULE_0_three__["a" /* WebGLRenderer */]({canvas: document.getElementById('canvas')});
 
-  renderer.setSize( window.innerWidth, window.innerHeight );
+  renderer.setSize( WIDTH, HEIGHT );
 
-  renderer.setClearColor(0x00ff00);
-
+  renderer.setClearColor(0xffffff);
 
   renderer.setPixelRatio(window.devicePixelRatio);
 
-  scene = new __WEBPACK_IMPORTED_MODULE_0_three__["b" /* Scene */]();
+  this.scene = new __WEBPACK_IMPORTED_MODULE_0_three__["b" /* Scene */]();
 
 
-  camera = new __WEBPACK_IMPORTED_MODULE_0_three__["c" /* PerspectiveCamera */]( 75, window.innerWidth / window.innerHeight, 1, 8000);
+  camera = new __WEBPACK_IMPORTED_MODULE_0_three__["c" /* PerspectiveCamera */]( 75, WIDTH / HEIGHT, 1, 8000);
   camera.position.z = 50;
+
+
+  //updating the camera
 
   geometry = new __WEBPACK_IMPORTED_MODULE_0_three__["d" /* BoxGeometry */]( 100, 100, 100, 100 );
 
@@ -44374,40 +44380,60 @@ Visualizer.prototype.initialize = function(){
 
   mesh = new __WEBPACK_IMPORTED_MODULE_0_three__["f" /* Mesh */]( geometry, material );
   mesh.position.set(0,0, -1000)
-  scene.add(mesh);
+  this.scene.add(mesh);
 
   var light = new __WEBPACK_IMPORTED_MODULE_0_three__["g" /* AmbientLight */](0xffffff, 0.5);
-  scene.add(light);
+  this.scene.add(light);
 
   var pointLight = new __WEBPACK_IMPORTED_MODULE_0_three__["h" /* PointLight */](0xffffff, 0.5);
-  scene.add(pointLight);
+  this.scene.add(pointLight);
 
   var directLight = new __WEBPACK_IMPORTED_MODULE_0_three__["i" /* DirectionalLight */](0xffffff, 0.5);
-  scene.add(directLight)
+  this.scene.add(directLight)
 
   // let audio = fileUpload();
   // console.log(audio);
-  
+  let that = this;
+
   function animate() {
       requestAnimationFrame( animate );
 
       mesh.rotation.x += 0.01;
       mesh.rotation.y += 0.02;
 
-      renderer.render(scene, camera );
+      renderer.render(that.scene, camera );
   }
   animate();
 
 };
 
 
-// Visualizer.prototype.createObjects = function() {
+Visualizer.prototype.createObjects = function() {
 
-//   for (let i = 0; i < this.numObj; i++) {
-//     Things[i]
-//   }
+  for (let i = 0; i < this.objNum; i++) {
+    // console.log(i);
 
-// };
+    //one geometry plz 
+
+
+    let geometry = new __WEBPACK_IMPORTED_MODULE_0_three__["d" /* BoxGeometry */]( 0.7, 0.7, 0.7);
+
+  // geometry = new THREE.BufferGeometry();
+
+
+
+    let material = new __WEBPACK_IMPORTED_MODULE_0_three__["e" /* MeshLambertMaterial */]( { color: 0xBADA55 } );
+
+    this.objArray[i] = new __WEBPACK_IMPORTED_MODULE_0_three__["f" /* Mesh */]( geometry, material );
+    this.objArray[i].position.set(i - this.objNum, 5, 10);
+    
+
+    this.scene.add(this.objArray[i]);
+    //export
+    // this.objArray.push(mesh);
+  }
+
+};
 
 
 
