@@ -1,18 +1,50 @@
 import * as THREE from 'three';
-import fileUpload from './audio';
+// import fil from './audio';
 
 
-let scene, camera, renderer;
-let geometry, material, mesh;
-
-renderer = new THREE.WebGLRenderer({canvas: document.getElementById('canvas')});
-
-renderer.setSize( window.innerWidth, window.innerHeight );
-
-renderer.setClearColor(0x00ff00);
 
 
-renderer.setPixelRatio(window.devicePixelRatio);
+window.onload = () => {
+  // let viz = new Visualizer();
+  let viz  =  new Visualizer();
+  viz.initialize();
+};
+
+
+
+//document on load is going to generate everything needed
+
+
+
+function Visualizer() {
+  //set some constants
+
+  //(at this time) arbitrary number of bars
+  // this.objNum = 60;
+
+  // //store 3d objects to be manipulated 
+  // this.objArray = new Array();
+
+  // // body...
+  // this.scene;
+  // this.camera; 
+  // this.renderer;
+  // this.controls;
+
+}
+
+Visualizer.prototype.initialize = function(){
+ let scene, camera, renderer;
+  let geometry, material, mesh;
+
+  renderer = new THREE.WebGLRenderer({canvas: document.getElementById('canvas')});
+
+  renderer.setSize( window.innerWidth, window.innerHeight );
+
+  renderer.setClearColor(0x00ff00);
+
+
+  renderer.setPixelRatio(window.devicePixelRatio);
 
   scene = new THREE.Scene();
 
@@ -41,16 +73,59 @@ renderer.setPixelRatio(window.devicePixelRatio);
   var directLight = new THREE.DirectionalLight(0xffffff, 0.5);
   scene.add(directLight)
 
-let audio = fileUpload();
-console.log(audio);
+  // let audio = fileUpload();
+  // console.log(audio);
   
-function animate() {
-    requestAnimationFrame( animate );
+  function animate() {
+      requestAnimationFrame( animate );
 
-    mesh.rotation.x += 0.01;
-    mesh.rotation.y += 0.02;
+      mesh.rotation.x += 0.01;
+      mesh.rotation.y += 0.02;
 
-    renderer.render(scene, camera );
-}
+      renderer.render(scene, camera );
+  }
+  animate();
 
-animate();
+};
+
+
+// Visualizer.prototype.createObjects = function() {
+
+//   for (let i = 0; i < this.numObj; i++) {
+//     Things[i]
+//   }
+
+// };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

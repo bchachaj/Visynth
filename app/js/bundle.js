@@ -44310,22 +44310,53 @@ function CanvasRenderer() {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__audio__ = __webpack_require__(2);
+
+// import fil from './audio';
 
 
 
 
-let scene, camera, renderer;
-let geometry, material, mesh;
-
-renderer = new __WEBPACK_IMPORTED_MODULE_0_three__["a" /* WebGLRenderer */]({canvas: document.getElementById('canvas')});
-
-renderer.setSize( window.innerWidth, window.innerHeight );
-
-renderer.setClearColor(0x00ff00);
+window.onload = () => {
+  // let viz = new Visualizer();
+  let viz  =  new Visualizer();
+  viz.initialize();
+};
 
 
-renderer.setPixelRatio(window.devicePixelRatio);
+
+//document on load is going to generate everything needed
+
+
+
+function Visualizer() {
+  //set some constants
+
+  //(at this time) arbitrary number of bars
+  // this.objNum = 60;
+
+  // //store 3d objects to be manipulated 
+  // this.objArray = new Array();
+
+  // // body...
+  // this.scene;
+  // this.camera; 
+  // this.renderer;
+  // this.controls;
+
+}
+
+Visualizer.prototype.initialize = function(){
+ let scene, camera, renderer;
+  let geometry, material, mesh;
+
+  renderer = new __WEBPACK_IMPORTED_MODULE_0_three__["a" /* WebGLRenderer */]({canvas: document.getElementById('canvas')});
+
+  renderer.setSize( window.innerWidth, window.innerHeight );
+
+  renderer.setClearColor(0x00ff00);
+
+
+  renderer.setPixelRatio(window.devicePixelRatio);
 
   scene = new __WEBPACK_IMPORTED_MODULE_0_three__["b" /* Scene */]();
 
@@ -44354,100 +44385,29 @@ renderer.setPixelRatio(window.devicePixelRatio);
   var directLight = new __WEBPACK_IMPORTED_MODULE_0_three__["i" /* DirectionalLight */](0xffffff, 0.5);
   scene.add(directLight)
 
-let audio = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__audio__["a" /* default */])();
-console.log(audio);
+  // let audio = fileUpload();
+  // console.log(audio);
   
-function animate() {
-    requestAnimationFrame( animate );
+  function animate() {
+      requestAnimationFrame( animate );
 
-    mesh.rotation.x += 0.01;
-    mesh.rotation.y += 0.02;
+      mesh.rotation.x += 0.01;
+      mesh.rotation.y += 0.02;
 
-    renderer.render(scene, camera );
-}
-
-animate();
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// var audio = new Audio();
-
-// audio.src = 'data/filler.mp3';
-// audio.controls = true;
-// audio.autoplay = true;
-// audio.loop = true;
-
-
-// take in audio
-
-const fileUpload = () => {
-
-	console.log('conn');
-
-input.onchange = function(e) {
-	debugger;
-	var sound = document.getElementById('audio-player');
-	sound.src = URL.createObjectURL(this.files[0]);
-
-//revoking the blobURI when you don't need it 
-	sound.onend = function(e) {
-		URL.revokeObjectURL(this.src);
-	}
-}
-var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-var analyser = audioCtx.createAnalyser();
-
-console.log(audioCtx);
-console.log(analyser);
-
-var bufferLength = analyser.frequencyBinCount;
-var dataArray = new Uint8Array(bufferLength);
-var c = analyser.getByteTimeDomainData(dataArray);
-
-return c;
+      renderer.render(scene, camera );
+  }
+  animate();
 
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (fileUpload);
-//analyzer node 
 
+// Visualizer.prototype.createObjects = function() {
 
+//   for (let i = 0; i < this.numObj; i++) {
+//     Things[i]
+//   }
 
-// //node is connect at some point between your source and your destination
-
-// source = audioCtx.createMediaStreamSource(stream);
-// source.connect(analyser);
-
-// analyser.connect(distortion);
-
-// distortion.connect(audioCtx.destination);
-
-// //will caption audio data in a certain frequency domain, depending of what is specified 
-// //in AnalyserNode.fftSize ( default is 2048 );
-
-
-
-// // specifiy a data array to be fed from the source
-
-
-// var bufferLength = analyser.frequencyBinCount;
-// var dataArray = new Uint8Array(bufferLength);
-// analyser.getByteTimeDomainData(dataArray);
-
-//array
-
-
-
-//different data averaging constants = AnalyserNode.smoothingTimeConstant;
-
-
-//Capture frequency data 
-
-// Analyser.getFloatFrequencyData() 
+// };
 
 
 
@@ -44456,7 +44416,32 @@ return c;
 
 
 
-//bottom of file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /***/ })
 /******/ ]);
