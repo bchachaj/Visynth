@@ -79,7 +79,7 @@
 /* unused harmony export UniformsUtils */
 /* unused harmony export ShaderChunk */
 /* unused harmony export FogExp2 */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return Fog; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return Fog; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Scene; });
 /* unused harmony export LensFlare */
 /* unused harmony export Sprite */
@@ -87,12 +87,12 @@
 /* unused harmony export SkinnedMesh */
 /* unused harmony export Skeleton */
 /* unused harmony export Bone */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return Mesh; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return Mesh; });
 /* unused harmony export LineSegments */
 /* unused harmony export LineLoop */
 /* unused harmony export Line */
 /* unused harmony export Points */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return Group; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return Group; });
 /* unused harmony export VideoTexture */
 /* unused harmony export DataTexture */
 /* unused harmony export CompressedTexture */
@@ -118,12 +118,12 @@
 /* unused harmony export AudioLoader */
 /* unused harmony export SpotLightShadow */
 /* unused harmony export SpotLight */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return PointLight; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return PointLight; });
 /* unused harmony export RectAreaLight */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return HemisphereLight; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return HemisphereLight; });
 /* unused harmony export DirectionalLightShadow */
 /* unused harmony export DirectionalLight */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return AmbientLight; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return AmbientLight; });
 /* unused harmony export LightShadow */
 /* unused harmony export Light */
 /* unused harmony export StereoCamera */
@@ -188,7 +188,7 @@
 /* unused harmony export Vector3 */
 /* unused harmony export Vector2 */
 /* unused harmony export Quaternion */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return Color; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return Color; });
 /* unused harmony export ImmediateRenderObject */
 /* unused harmony export VertexNormalsHelper */
 /* unused harmony export SpotLightHelper */
@@ -229,7 +229,7 @@
 /* unused harmony export ParametricGeometry */
 /* unused harmony export ParametricBufferGeometry */
 /* unused harmony export TetrahedronGeometry */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return TetrahedronBufferGeometry; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return TetrahedronBufferGeometry; });
 /* unused harmony export OctahedronGeometry */
 /* unused harmony export OctahedronBufferGeometry */
 /* unused harmony export IcosahedronGeometry */
@@ -274,10 +274,10 @@
 /* unused harmony export PointsMaterial */
 /* unused harmony export MeshPhysicalMaterial */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return MeshStandardMaterial; });
-/* unused harmony export MeshPhongMaterial */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return MeshPhongMaterial; });
 /* unused harmony export MeshToonMaterial */
 /* unused harmony export MeshNormalMaterial */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return MeshLambertMaterial; });
+/* unused harmony export MeshLambertMaterial */
 /* unused harmony export MeshDepthMaterial */
 /* unused harmony export MeshDistanceMaterial */
 /* unused harmony export MeshBasicMaterial */
@@ -44310,61 +44310,50 @@ function CanvasRenderer() {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__visualizerTypes__ = __webpack_require__(5);
 
 
 
-const visualizerTypes = {
-    disk: {
-        geometry: new __WEBPACK_IMPORTED_MODULE_0_three__["j" /* BoxGeometry */](19.7, 19.7, 19.7),
-        material: new __WEBPACK_IMPORTED_MODULE_0_three__["k" /* MeshStandardMaterial */]({
-            color: 0xb30000,
-            roughness: 0.2,
-            metalness: 0.7
-        }),
-        rotation: 0.02
-    },
 
-    spike: {
-        geometry: new __WEBPACK_IMPORTED_MODULE_0_three__["d" /* TetrahedronBufferGeometry */](50),
-        material: new __WEBPACK_IMPORTED_MODULE_0_three__["e" /* MeshLambertMaterial */]({ color: 0xBADA55 }),
-        position: {
-            y: Math.random() * 1000 - 500,
-            z: Math.random() * 700 - 500,
-        },
-        rotation: {
-            x: Math.random() * 2 * Math.PI,
-            y: Math.random() * 2 * Math.PI
-        },
-        group: new __WEBPACK_IMPORTED_MODULE_0_three__["l" /* Group */]()
-    },
-
-
-
-};
 
 
 
 function objectFactory(_this, scene) {
 
     let visualizer = _this;
-    //precursors for 3d object
 
-
-
-    scene.background = new __WEBPACK_IMPORTED_MODULE_0_three__["m" /* Color */](0xffffff);
-    scene.fog = new __WEBPACK_IMPORTED_MODULE_0_three__["n" /* Fog */](0xffffff, 1, 10000);
+    scene.background = new __WEBPACK_IMPORTED_MODULE_0_three__["g" /* Color */](0xffffff);
+    scene.fog = new __WEBPACK_IMPORTED_MODULE_0_three__["h" /* Fog */](0xffffff, 1, 10000);
 
     for (let i = 0; i < visualizer.objNum; i++) {
-        // assign array position to new 3d objects
-        const z = new __WEBPACK_IMPORTED_MODULE_0_three__["f" /* Mesh */](visualizerTypes.disk.geometry, visualizerTypes.disk.material)
-        visualizer.objArray[i] = z;
 
+        let type = __WEBPACK_IMPORTED_MODULE_2__visualizerTypes__["a" /* default */][visualizer.state];
+
+        // assign array position to new 3d objects
+        let assignment;
+        assignment = new __WEBPACK_IMPORTED_MODULE_0_three__["i" /* Mesh */](type.geometry, type.material)
+
+
+        visualizer.objArray[i] = assignment;
+        let thisObject = visualizer.objArray[i];
         //NB: probably varying positions
 
-        visualizer.objArray[i].position.set(((i - visualizer.objNum) * 50.3 + (window.innerWidth / 0.65)), -165, (5 * visualizer.objNum));
 
-        visualizer.objArray[i].rotation.x += visualizerTypes.disk.rotation;
-        // visualizer.objArray[i].rotation.y += 0.01;
+        // if(visualizer.state !== 'next') {
+        thisObject.position.set(((i - visualizer.objNum) * 50.3 + (window.innerWidth / 0.65)), -165, (5 * visualizer.objNum));
+        // } else {
+        //     console.log(type);
+        //     thisObject.position.set(((i - visualizer.objNum) * 50.3 + (window.innerWidth / 0.65)), -165, (5 * visualizer.objNum));
+
+
+        //    // thisObject.position.x.set(type.position.x);
+        //    // thisObject.position.y.set(type.position.y);
+        // }
+
+
+        // thisObject.rotation.x += type.rotation;
+
+        // thisObject.rotation.y += 0.01;
 
 
 
@@ -44373,27 +44362,23 @@ function objectFactory(_this, scene) {
         function animate() {
             requestAnimationFrame(animate);
             that.objArray[i].rotation.x += 0.005;
+
             // that.objArray[i].rotation.y += 0.015;
         }
-
         animate();
 
-        scene.background = new __WEBPACK_IMPORTED_MODULE_0_three__["m" /* Color */](0xffffff);
-        scene.fog = new __WEBPACK_IMPORTED_MODULE_0_three__["n" /* Fog */](0xffffff, 1, 10000);
-
+        scene.background = new __WEBPACK_IMPORTED_MODULE_0_three__["g" /* Color */](0xffffff);
+        scene.fog = new __WEBPACK_IMPORTED_MODULE_0_three__["h" /* Fog */](0xffffff, 1, 10000);
 
         // mesh.matrixAutoUpdate = false;
         // mesh.updateMatrix();
         // group.add(mesh);
 
-
-        // visualizer.objArray[i] = group;
-
-
+        // thisObject = group;
         // scene.add( group );
 
 
-        scene(visualizer.objArray[i]);
+        scene(thisObject);
 
     }
 
@@ -44420,6 +44405,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__objectFactory__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mediator__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__visualizer__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__visualizerTypes__ = __webpack_require__(5);
+
 
 
 
@@ -44427,17 +44414,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 //med.state === what objects to show 
 //
-let state = 'disk';
+const defaultState = 'disk';
 
-let viz  =  new __WEBPACK_IMPORTED_MODULE_3__visualizer__["a" /* default */]();
+let state = defaultState;
+
+const viz  =  new __WEBPACK_IMPORTED_MODULE_3__visualizer__["a" /* default */]();
 
 window.onload = () => {
-  // let viz = new Visualizer();
-  // let viz  =  new Visualizer();
   viz.initialize();
+  viz.state = state;
+  viz.generateObjects();
   viz.processAudio();
-  let med = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__mediator__["a" /* default */])();
-  med.init();
   //object set c = [...click]
 
 };
@@ -44449,8 +44436,13 @@ const vizToggles = document.querySelectorAll('.viz-button');
 vizToggles.forEach((button) => {
   button.addEventListener('click', () => {
     viz.state = button.dataset.type;
-    console.log(viz.state);
+    viz.initialize();
+    viz.generateObjects();
   });
+
+  if(button.dataset.type === viz.state) {
+    button.classList.add('highlighted');
+  }
 });
 
 
@@ -44520,7 +44512,7 @@ const visualMediator = function() {
 // };
 
 
-/* harmony default export */ __webpack_exports__["a"] = (visualMediator);
+/* unused harmony default export */ var _unused_webpack_default_export = (visualMediator);
 
 /***/ }),
 /* 4 */
@@ -44534,39 +44526,18 @@ const visualMediator = function() {
 
 
 
-// window.onload = () => {
-//   // let viz = new Visualizer();
-//   let viz  =  new Visualizer();
-//   viz.initialize();
-//   viz.processAudio();
-//   let med = visualMediator();
-
-//   med.init()
-//   med.setVisualState('spike');
-//   console.log(med.state);
-
-//   //object set c = [...click]
-
-// };
 
 function Visualizer() {
-    //set some constants
 
-    //(at this time) arbitrary number of bars
     this.objNum = 60;
-    // //store 3d objects to be manipulated 
     this.objArray = new Array();
-    // // body...
     this.state = __WEBPACK_IMPORTED_MODULE_1__index__["default"];
+
     this.scene;
     this.camera;
     this.renderer;
     this.controls;
     this.analyser;
-}
-
-Visualizer.prototype.receiveState = function(newState) {
-    this.state = newState;
 }
 
 
@@ -44581,67 +44552,36 @@ Visualizer.prototype.initialize = function() {
     let WIDTH = window.innerWidth;
 
     this.renderer = new __WEBPACK_IMPORTED_MODULE_2_three__["b" /* WebGLRenderer */]({ antialias: true, canvas: document.getElementById('canvas') });
-
-    this.renderer.setSize(WIDTH, HEIGHT / 1.5);
-
+    this.renderer.setSize(WIDTH, HEIGHT);
     this.renderer.setClearColor(0x090909);
-
     this.renderer.setPixelRatio(window.devicePixelRatio);
 
     this.scene = new __WEBPACK_IMPORTED_MODULE_2_three__["a" /* Scene */]();
 
-
-    // this.camera = new THREE.PerspectiveCamera( 42, WIDTH / HEIGHT, 1, 10000);
-    // this.camera.position.z = 6000;
-    // this.camera.position.x = -WIDTH * 5 ;
-
     this.camera = new __WEBPACK_IMPORTED_MODULE_2_three__["c" /* PerspectiveCamera */](60, window.innerWidth / window.innerHeight, 1, 10000);
     this.camera.position.z = 1800;
 
-
-
-    //updating the camera
-
-
-    geometry = new __WEBPACK_IMPORTED_MODULE_2_three__["d" /* TetrahedronBufferGeometry */](550);
-    material = new __WEBPACK_IMPORTED_MODULE_2_three__["e" /* MeshLambertMaterial */]({ color: 0x2f4f4f });
-
-    mesh = new __WEBPACK_IMPORTED_MODULE_2_three__["f" /* Mesh */](geometry, material);
-    mesh.rotation.x += 0.21;
-    mesh.rotation.y += 0.52;
-    mesh.rotation.z += 0.75;
-    mesh.position.set(0, 0, -1000)
-    // this.scene.add(mesh);
-
-    //field of anti-tank barriers => lay out a grid, and jump position up/down. plus size
-
-
-    //light, camera, action
-
-    const light = new __WEBPACK_IMPORTED_MODULE_2_three__["g" /* AmbientLight */](0xffffbb, 0.9);
+    const light = new __WEBPACK_IMPORTED_MODULE_2_three__["d" /* AmbientLight */](0xffffbb, 0.9);
     this.scene.add(light);
 
-    const pointLight = new __WEBPACK_IMPORTED_MODULE_2_three__["h" /* PointLight */](0xffffbb, 0.8);
+    const pointLight = new __WEBPACK_IMPORTED_MODULE_2_three__["e" /* PointLight */](0xffffbb, 0.8);
     this.scene.add(pointLight);
 
     // const directLight = new THREE.DirectionalLight(0xffffbb, 0.3);
     // this.scene.add(directLight);
 
-    var hemiLight = new __WEBPACK_IMPORTED_MODULE_2_three__["i" /* HemisphereLight */](0xffffbb, 0x080820, 1);
+    var hemiLight = new __WEBPACK_IMPORTED_MODULE_2_three__["f" /* HemisphereLight */](0xffffbb, 0x080820, 1);
     this.scene.add(light);
 
 
     let that = this;
 
-    // function animate() {
-    //     requestAnimationFrame( animate );
+};
 
-    //     mesh.rotation.x += 0.01;
-    //     mesh.rotation.y += 0.02;
 
-    //     that.renderer.render(that.scene, that.camera );
-    // }
-    // animate();
+Visualizer.prototype.generateObjects = function() {
+
+    let that = this;
 
     const _addtoscene = (arg) => {
         this.scene.add(arg);
@@ -44652,10 +44592,7 @@ Visualizer.prototype.initialize = function() {
 
     }).bind(this);
     factory();
-};
-
-
-
+}
 
 
 
@@ -44688,59 +44625,18 @@ Visualizer.prototype.processAudio = function() {
     function renderFrame() {
         requestAnimationFrame(renderFrame);
 
-        that.analyser.getByteFrequencyData(frequencyData);
-
+        that.analyser.getByteFrequencyData(frequencyData)
         const offset = Math.round(frequencyData.length / that.objNum);
-
         that.renderer.render(that.scene, that.camera);
 
         for (var i = 0; i < that.objNum; i++) {
             let value = frequencyData[i * offset] / 10;
 
+            value = value < 2 ? 2 : value;
+            that.objArray[i].scale.y = value;
+            that.objArray[i].scale.z = value;
+            that.objArray[i].scale.x = value * 0.1;
 
-            //bullshit, don't do this
-            //(checking that it's a group though)
-            if (that.objArray[i].children[0]) {
-                value = value < 10 ? 10 : value;
-                that.objArray[i].scale.z = value / 10;
-                that.objArray[i].children[0].material.color.setHex(0x157cd6);
-            } else {
-
-                that.objArray[i].material.color.setHex(0x157cd6);
-                value = value < 1 ? 1 : value;
-                that.objArray[i].scale.y = value;
-                that.objArray[i].scale.z = value;
-
-                // ????
-                that.objArray[i].scale.x = value * 0.1;
-            }
-
-
-            // //icicle values
-
-
-
-            // that.objArray[i].scale.x = value * 0.1;
-
-            // var hue = i/this.analyser.frequencyBinCount * 360;
-            // drawContext.fillStyle = 'hsl(' + hue + ', 100%, 50%)';
-            // if( value > 7) {
-            //   that.objArray[i].children[0].material.color.setHex( 0x157cd6);
-            //   // that.objArray[i].children[0].material.color.setHex( 0x800000);
-            // }
-            // else if (value > 30 && value <= 37) {
-            //   that.objArray[i].children[0].material.color.setHex( 0x578adb);
-            //   // that.objArray[i].children[0].material.color.setHex( 0xcc0000);
-            // } else if (value < 30 && value > 20 ){
-            //   that.objArray[i].children[0].material.color.setHex( 0x9ec3ff);
-            //   // that.objArray[i].children[0].material.color.setHex( 0xe60000);
-            // } else if (value < 20 && value > 10) {
-            //    that.objArray[i].children[0].material.color.setHex( 0xbec9db);
-            //    // that.objArray[i].children[0].material.color.setHex( 0xff3300);
-            // } else {
-            //     that.objArray[i].children[0].material.color.setHex( 0x000000);
-            //     // that.objArray[i].children[0].material.color.setHex( 0xff3333);
-            // }
         }
     }
 
@@ -44760,6 +44656,66 @@ Visualizer.prototype.processAudio = function() {
 
 
 //bottom of file
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three__ = __webpack_require__(0);
+
+
+const visualizerTypes = {
+    disk: {
+        geometry: new __WEBPACK_IMPORTED_MODULE_0_three__["j" /* BoxGeometry */](19.7, 19.7, 19.7),
+        material: new __WEBPACK_IMPORTED_MODULE_0_three__["k" /* MeshStandardMaterial */]({
+            color: 0xBADA77,
+            roughness: 0.2,
+            metalness: 0.7
+        }),
+        rotation: 0.02
+    },
+
+    spike: {
+        geometry: new __WEBPACK_IMPORTED_MODULE_0_three__["l" /* TetrahedronBufferGeometry */](50),
+        material: new __WEBPACK_IMPORTED_MODULE_0_three__["m" /* MeshPhongMaterial */]({
+            color: 0x2f49dd,
+            wireframe: true
+
+        }),
+        position: {
+            y: Math.random() * 1000 - 500,
+            z: Math.random() * 700 - 500,
+        },
+        rotation: {
+            x: Math.random() * 2 * Math.PI,
+            y: Math.random() * 2 * Math.PI
+        },
+        group: new __WEBPACK_IMPORTED_MODULE_0_three__["n" /* Group */]()
+    },
+
+    next: {
+        geometry: new __WEBPACK_IMPORTED_MODULE_0_three__["l" /* TetrahedronBufferGeometry */](50),
+        material: new __WEBPACK_IMPORTED_MODULE_0_three__["m" /* MeshPhongMaterial */]({
+            color: 0xffffff,
+
+
+        }),
+        position: {
+            y: Math.random() * 1000 - 500,
+            z: Math.random() * 700 - 500,
+        },
+        rotation: {
+            x: Math.random() * 2 * Math.PI,
+            y: Math.random() * 2 * Math.PI
+        },
+        group: new __WEBPACK_IMPORTED_MODULE_0_three__["n" /* Group */]()
+    }
+
+};
+
+
+/* harmony default export */ __webpack_exports__["a"] = (visualizerTypes);
 
 /***/ })
 /******/ ]);

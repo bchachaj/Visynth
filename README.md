@@ -1,25 +1,20 @@
-### JS Project Proposal: 3d Audio Visualization
+### Visynth
 
-   Working Title: Boombox
-### Abstract
+### 3D Audio Visualization
 This project aims to take advantage of the Web Audio API to render three dimensional animations driven by the audio frequencies. It has high potential for being a very visually appealing project with many avenues for user interaction, as well as a promising way to showcase JavaScript skills. Also see it as an opportunity to tackle a more mathematically intensive project than I have done in the past.
 
 
-### Functionality & MVP  
+### Functionality 
 
-With this Boombox, users will be able to:
+To get start:
 
-- [ ] Upload an mp3 file to be played
-- [ ] See an accurate visual representation of the audio
-- [ ] Be able to affect the animations via keyboard
+- [ ] Navigate to folder in your terminal
+- [ ] Run 'npm start'
 
-### Wireframes
-
-The entirety of the application will be housed in one screen, with a file upload and a user control context menu. The complexity of the user controls will depend on the time required to bootstrap the project.
 
 ### Architecture and Technologies
 
-This project will be implemented with the following technologies:
+This project is implemented with the following technologies:
 
 - `JavaScript` for game logic,
 - `Three.js` for 3D modeling,

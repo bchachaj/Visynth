@@ -2,39 +2,18 @@ import objectFactory from './objectFactory';
 import state from './index';
 import * as THREE from 'three';
 
-// window.onload = () => {
-//   // let viz = new Visualizer();
-//   let viz  =  new Visualizer();
-//   viz.initialize();
-//   viz.processAudio();
-//   let med = visualMediator();
-
-//   med.init()
-//   med.setVisualState('spike');
-//   console.log(med.state);
-
-//   //object set c = [...click]
-
-// };
 
 function Visualizer() {
-    //set some constants
 
-    //(at this time) arbitrary number of bars
     this.objNum = 60;
-    // //store 3d objects to be manipulated 
     this.objArray = new Array();
-    // // body...
     this.state = state;
+
     this.scene;
     this.camera;
     this.renderer;
     this.controls;
     this.analyser;
-}
-
-Visualizer.prototype.receiveState = function(newState) {
-    this.state = newState;
 }
 
 
@@ -49,42 +28,14 @@ Visualizer.prototype.initialize = function() {
     let WIDTH = window.innerWidth;
 
     this.renderer = new THREE.WebGLRenderer({ antialias: true, canvas: document.getElementById('canvas') });
-
-    this.renderer.setSize(WIDTH, HEIGHT / 1.5);
-
+    this.renderer.setSize(WIDTH, HEIGHT);
     this.renderer.setClearColor(0x090909);
-
     this.renderer.setPixelRatio(window.devicePixelRatio);
 
     this.scene = new THREE.Scene();
 
-
-    // this.camera = new THREE.PerspectiveCamera( 42, WIDTH / HEIGHT, 1, 10000);
-    // this.camera.position.z = 6000;
-    // this.camera.position.x = -WIDTH * 5 ;
-
     this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 10000);
     this.camera.position.z = 1800;
-
-
-
-    //updating the camera
-
-
-    geometry = new THREE.TetrahedronBufferGeometry(550);
-    material = new THREE.MeshLambertMaterial({ color: 0x2f4f4f });
-
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.rotation.x += 0.21;
-    mesh.rotation.y += 0.52;
-    mesh.rotation.z += 0.75;
-    mesh.position.set(0, 0, -1000)
-    // this.scene.add(mesh);
-
-    //field of anti-tank barriers => lay out a grid, and jump position up/down. plus size
-
-
-    //light, camera, action
 
     const light = new THREE.AmbientLight(0xffffbb, 0.9);
     this.scene.add(light);
@@ -101,15 +52,12 @@ Visualizer.prototype.initialize = function() {
 
     let that = this;
 
-    // function animate() {
-    //     requestAnimationFrame( animate );
+};
 
-    //     mesh.rotation.x += 0.01;
-    //     mesh.rotation.y += 0.02;
 
-    //     that.renderer.render(that.scene, that.camera );
-    // }
-    // animate();
+Visualizer.prototype.generateObjects = function() {
+
+    let that = this;
 
     const _addtoscene = (arg) => {
         this.scene.add(arg);
@@ -120,10 +68,7 @@ Visualizer.prototype.initialize = function() {
 
     }).bind(this);
     factory();
-};
-
-
-
+}
 
 
 
@@ -156,59 +101,18 @@ Visualizer.prototype.processAudio = function() {
     function renderFrame() {
         requestAnimationFrame(renderFrame);
 
-        that.analyser.getByteFrequencyData(frequencyData);
-
+        that.analyser.getByteFrequencyData(frequencyData)
         const offset = Math.round(frequencyData.length / that.objNum);
-
         that.renderer.render(that.scene, that.camera);
 
         for (var i = 0; i < that.objNum; i++) {
             let value = frequencyData[i * offset] / 10;
 
+            value = value < 2 ? 2 : value;
+            that.objArray[i].scale.y = value;
+            that.objArray[i].scale.z = value;
+            that.objArray[i].scale.x = value * 0.1;
 
-            //bullshit, don't do this
-            //(checking that it's a group though)
-            if (that.objArray[i].children[0]) {
-                value = value < 10 ? 10 : value;
-                that.objArray[i].scale.z = value / 10;
-                that.objArray[i].children[0].material.color.setHex(0x157cd6);
-            } else {
-
-                that.objArray[i].material.color.setHex(0x157cd6);
-                value = value < 1 ? 1 : value;
-                that.objArray[i].scale.y = value;
-                that.objArray[i].scale.z = value;
-
-                // ????
-                that.objArray[i].scale.x = value * 0.1;
-            }
-
-
-            // //icicle values
-
-
-
-            // that.objArray[i].scale.x = value * 0.1;
-
-            // var hue = i/this.analyser.frequencyBinCount * 360;
-            // drawContext.fillStyle = 'hsl(' + hue + ', 100%, 50%)';
-            // if( value > 7) {
-            //   that.objArray[i].children[0].material.color.setHex( 0x157cd6);
-            //   // that.objArray[i].children[0].material.color.setHex( 0x800000);
-            // }
-            // else if (value > 30 && value <= 37) {
-            //   that.objArray[i].children[0].material.color.setHex( 0x578adb);
-            //   // that.objArray[i].children[0].material.color.setHex( 0xcc0000);
-            // } else if (value < 30 && value > 20 ){
-            //   that.objArray[i].children[0].material.color.setHex( 0x9ec3ff);
-            //   // that.objArray[i].children[0].material.color.setHex( 0xe60000);
-            // } else if (value < 20 && value > 10) {
-            //    that.objArray[i].children[0].material.color.setHex( 0xbec9db);
-            //    // that.objArray[i].children[0].material.color.setHex( 0xff3300);
-            // } else {
-            //     that.objArray[i].children[0].material.color.setHex( 0x000000);
-            //     // that.objArray[i].children[0].material.color.setHex( 0xff3333);
-            // }
         }
     }
 
