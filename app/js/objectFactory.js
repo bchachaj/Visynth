@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-
+import state from './index';
 
 const visualizerTypes = {
     disk: {
@@ -41,9 +41,8 @@ function objectFactory(_this, scene) {
 
     scene.background = new THREE.Color(0xffffff);
     scene.fog = new THREE.Fog(0xffffff, 1, 10000);
+
     for (let i = 0; i < visualizer.objNum; i++) {
-
-
         // assign array position to new 3d objects
         const z = new THREE.Mesh(visualizerTypes.disk.geometry, visualizerTypes.disk.material)
         visualizer.objArray[i] = z;
@@ -55,7 +54,7 @@ function objectFactory(_this, scene) {
         visualizer.objArray[i].rotation.x += visualizerTypes.disk.rotation;
         // visualizer.objArray[i].rotation.y += 0.01;
 
-        
+
 
         let that = visualizer;
 
@@ -88,17 +87,6 @@ function objectFactory(_this, scene) {
 
 }
 
-
-
-function visualMediator () {
-   this.state = disk;
-
-};
-
-
-visualMediator.prototype.setVisualState = (obj) => {
-   this.state = obj;
-};
 
 
 

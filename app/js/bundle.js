@@ -79,7 +79,7 @@
 /* unused harmony export UniformsUtils */
 /* unused harmony export ShaderChunk */
 /* unused harmony export FogExp2 */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return Fog; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return Fog; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Scene; });
 /* unused harmony export LensFlare */
 /* unused harmony export Sprite */
@@ -92,7 +92,7 @@
 /* unused harmony export LineLoop */
 /* unused harmony export Line */
 /* unused harmony export Points */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return Group; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return Group; });
 /* unused harmony export VideoTexture */
 /* unused harmony export DataTexture */
 /* unused harmony export CompressedTexture */
@@ -120,9 +120,9 @@
 /* unused harmony export SpotLight */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return PointLight; });
 /* unused harmony export RectAreaLight */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return HemisphereLight; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return HemisphereLight; });
 /* unused harmony export DirectionalLightShadow */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return DirectionalLight; });
+/* unused harmony export DirectionalLight */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return AmbientLight; });
 /* unused harmony export LightShadow */
 /* unused harmony export Light */
@@ -188,7 +188,7 @@
 /* unused harmony export Vector3 */
 /* unused harmony export Vector2 */
 /* unused harmony export Quaternion */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return Color; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return Color; });
 /* unused harmony export ImmediateRenderObject */
 /* unused harmony export VertexNormalsHelper */
 /* unused harmony export SpotLightHelper */
@@ -265,7 +265,7 @@
 /* unused harmony export CylinderBufferGeometry */
 /* unused harmony export CircleGeometry */
 /* unused harmony export CircleBufferGeometry */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return BoxGeometry; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return BoxGeometry; });
 /* unused harmony export BoxBufferGeometry */
 /* unused harmony export ShadowMaterial */
 /* unused harmony export SpriteMaterial */
@@ -273,7 +273,7 @@
 /* unused harmony export ShaderMaterial */
 /* unused harmony export PointsMaterial */
 /* unused harmony export MeshPhysicalMaterial */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return MeshStandardMaterial; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return MeshStandardMaterial; });
 /* unused harmony export MeshPhongMaterial */
 /* unused harmony export MeshToonMaterial */
 /* unused harmony export MeshNormalMaterial */
@@ -44309,13 +44309,14 @@ function CanvasRenderer() {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(2);
 
 
 
 const visualizerTypes = {
     disk: {
-        geometry: new __WEBPACK_IMPORTED_MODULE_0_three__["k" /* BoxGeometry */](19.7, 19.7, 19.7),
-        material: new __WEBPACK_IMPORTED_MODULE_0_three__["l" /* MeshStandardMaterial */]({
+        geometry: new __WEBPACK_IMPORTED_MODULE_0_three__["j" /* BoxGeometry */](19.7, 19.7, 19.7),
+        material: new __WEBPACK_IMPORTED_MODULE_0_three__["k" /* MeshStandardMaterial */]({
             color: 0xb30000,
             roughness: 0.2,
             metalness: 0.7
@@ -44334,7 +44335,7 @@ const visualizerTypes = {
             x: Math.random() * 2 * Math.PI,
             y: Math.random() * 2 * Math.PI
         },
-        group: new __WEBPACK_IMPORTED_MODULE_0_three__["m" /* Group */]()
+        group: new __WEBPACK_IMPORTED_MODULE_0_three__["l" /* Group */]()
     },
 
 
@@ -44350,11 +44351,10 @@ function objectFactory(_this, scene) {
 
 
 
-    scene.background = new __WEBPACK_IMPORTED_MODULE_0_three__["n" /* Color */](0xffffff);
-    scene.fog = new __WEBPACK_IMPORTED_MODULE_0_three__["o" /* Fog */](0xffffff, 1, 10000);
+    scene.background = new __WEBPACK_IMPORTED_MODULE_0_three__["m" /* Color */](0xffffff);
+    scene.fog = new __WEBPACK_IMPORTED_MODULE_0_three__["n" /* Fog */](0xffffff, 1, 10000);
+
     for (let i = 0; i < visualizer.objNum; i++) {
-
-
         // assign array position to new 3d objects
         const z = new __WEBPACK_IMPORTED_MODULE_0_three__["f" /* Mesh */](visualizerTypes.disk.geometry, visualizerTypes.disk.material)
         visualizer.objArray[i] = z;
@@ -44366,7 +44366,7 @@ function objectFactory(_this, scene) {
         visualizer.objArray[i].rotation.x += visualizerTypes.disk.rotation;
         // visualizer.objArray[i].rotation.y += 0.01;
 
-        
+
 
         let that = visualizer;
 
@@ -44378,8 +44378,8 @@ function objectFactory(_this, scene) {
 
         animate();
 
-        scene.background = new __WEBPACK_IMPORTED_MODULE_0_three__["n" /* Color */](0xffffff);
-        scene.fog = new __WEBPACK_IMPORTED_MODULE_0_three__["o" /* Fog */](0xffffff, 1, 10000);
+        scene.background = new __WEBPACK_IMPORTED_MODULE_0_three__["m" /* Color */](0xffffff);
+        scene.fog = new __WEBPACK_IMPORTED_MODULE_0_three__["n" /* Fog */](0xffffff, 1, 10000);
 
 
         // mesh.matrixAutoUpdate = false;
@@ -44401,17 +44401,6 @@ function objectFactory(_this, scene) {
 
 
 
-function visualMediator () {
-   this.state = disk;
-
-};
-
-
-visualMediator.prototype.setVisualState = (obj) => {
-   this.state = obj;
-};
-
-
 
 
 /* harmony default export */ __webpack_exports__["a"] = (objectFactory);
@@ -44430,232 +44419,49 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__objectFactory__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mediator__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__visualizer__ = __webpack_require__(4);
 
 
 
 
+
+//med.state === what objects to show 
+//
+let state = 'disk';
+
+let viz  =  new __WEBPACK_IMPORTED_MODULE_3__visualizer__["a" /* default */]();
 
 window.onload = () => {
   // let viz = new Visualizer();
-  let viz  =  new Visualizer();
+  // let viz  =  new Visualizer();
   viz.initialize();
-  // viz.createObjects();
   viz.processAudio();
-
   let med = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__mediator__["a" /* default */])();
-
-  // console.log(visualMediator);
-
-  // console.log(visualMediator().init());
-
-  med.init()
-  med.setVisualState('spike');
-  console.log(med.state);
-
+  med.init();
   //object set c = [...click]
 
 };
 
 
+//event handling 
+const vizToggles = document.querySelectorAll('.viz-button');
 
-function Visualizer() {
-  //set some constants
+vizToggles.forEach((button) => {
+  button.addEventListener('click', () => {
+    viz.state = button.dataset.type;
+    console.log(viz.state);
+  });
+});
 
-  //(at this time) arbitrary number of bars
-  this.objNum = 60;
-  // //store 3d objects to be manipulated 
-  this.objArray = new Array();
-  // // body...
 
-  this.scene;
-  this.camera; 
-  this.renderer;
-  this.controls;
-  this.analyser;
-}
+// const handleStateChange = (data, state) => {
+//   debugger;
+//   visualMediator().setVisualState(data);
+// };
 
+//end event handling 
 
-Visualizer.prototype.initialize = function(){
-  let scene, camera, renderer;
-  let geometry, material, mesh;
-
-  this.scene = new __WEBPACK_IMPORTED_MODULE_0_three__["a" /* Scene */]();
-
-
-  let HEIGHT = window.innerHeight;
-  let WIDTH = window.innerWidth;
-
-  this.renderer = new __WEBPACK_IMPORTED_MODULE_0_three__["b" /* WebGLRenderer */]({antialias: true, canvas: document.getElementById('canvas')});
-
-  this.renderer.setSize( WIDTH, HEIGHT );
-
-  this.renderer.setClearColor(0xd0101010);
-
-  this.renderer.setPixelRatio(window.devicePixelRatio);
-
-  this.scene = new __WEBPACK_IMPORTED_MODULE_0_three__["a" /* Scene */]();
-
-
-  // this.camera = new THREE.PerspectiveCamera( 42, WIDTH / HEIGHT, 1, 10000);
-  // this.camera.position.z = 6000;
-  // this.camera.position.x = -WIDTH * 5 ;
-
-  this.camera = new __WEBPACK_IMPORTED_MODULE_0_three__["c" /* PerspectiveCamera */]( 60, window.innerWidth / window.innerHeight, 1, 10000 );
-  this.camera.position.z = 1200;
-
-
-
-  //updating the camera
-
-
-  geometry = new __WEBPACK_IMPORTED_MODULE_0_three__["d" /* TetrahedronBufferGeometry */]( 550 );
-  material = new __WEBPACK_IMPORTED_MODULE_0_three__["e" /* MeshLambertMaterial */]( { color: 0x2f4f4f} );
-
-  mesh = new __WEBPACK_IMPORTED_MODULE_0_three__["f" /* Mesh */]( geometry, material );
-        mesh.rotation.x += 0.21;
-      mesh.rotation.y += 0.52;
-      mesh.rotation.z += 0.75;
-  mesh.position.set(0,0, -1000)
-  this.scene.add(mesh);
-
-  //field of anti-tank barriers => lay out a grid, and jump position up/down. plus size
-
-
-  //light, camera, action
-
-  const light = new __WEBPACK_IMPORTED_MODULE_0_three__["g" /* AmbientLight */](0xffffbb, 0.9);
-  this.scene.add(light);
-
-  const pointLight = new __WEBPACK_IMPORTED_MODULE_0_three__["h" /* PointLight */](0xffffbb, 0.8);
-  this.scene.add(pointLight);
-
-  const directLight = new __WEBPACK_IMPORTED_MODULE_0_three__["i" /* DirectionalLight */](0xffffbb, 0.3);
-  this.scene.add(directLight);
-
-  var hemiLight = new __WEBPACK_IMPORTED_MODULE_0_three__["j" /* HemisphereLight */]( 0xffffbb, 0x080820, 1 );
-  this.scene.add( light );
-
-
-  let that = this;
-
-  function animate() {
-      requestAnimationFrame( animate );
-
-      mesh.rotation.x += 0.01;
-      mesh.rotation.y += 0.02;
-
-      that.renderer.render(that.scene, that.camera );
-  }
-  animate();
-
-  const _addtoscene = (arg) => {
-    this.scene.add(arg);
-  };
-
-  const factory = (function(){
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__objectFactory__["a" /* default */])(that, _addtoscene);
-
-  }).bind(this);
-  factory();
-};
-
-
-
-
-
-
-
-Visualizer.prototype.processAudio = function() {
-
-  let analyser;
-  const context = new AudioContext();
-  const audio = document.getElementById('audio-player');
-
-  const audioSource = context.createMediaElementSource(audio);
-  audioSource.crossOrigin = "anonymous";
-
-
-  this.analyser = context.createAnalyser();
-
-  // this.analyser.fftSize = 2048;
-  this.analyser.smoothingTimeConstant = 0.8;
-
-  audioSource.connect(this.analyser);
-  //connect to actually hear sound when played
-  audioSource.connect(context.destination); 
-
-  var frequencyData = new Uint8Array(this.analyser.frequencyBinCount);
-
-
-  let that = this;
-
-  function renderFrame() {
-    requestAnimationFrame( renderFrame );
-
-    that.analyser.getByteFrequencyData(frequencyData);
-
-    const offset = Math.round(frequencyData.length / that.objNum);
-
-    that.renderer.render(that.scene, that.camera);
-
-    for (var i = 0; i < that.objNum; i++) {
-      let value = frequencyData[i * offset] / 10;
-
-
-      //bullshit, don't do this
-      //(checking that it's a group though)
-      if(that.objArray[i].children[0]) {
-        value = value < 10 ? 10 : value;
-        that.objArray[i].scale.z = value / 10;
-        that.objArray[i].children[0].material.color.setHex( 0x157cd6);
-      } else {
-        
-      that.objArray[i].material.color.setHex( 0x157cd6);
-      value = value < 1 ? 1 : value;
-      that.objArray[i].scale.y = value;
-      that.objArray[i].scale.z =  value ;
-
-      // ????
-      that.objArray[i].scale.x = value * 0.1;
-      }
-
-
-      // //icicle values
-
-
-
-      // that.objArray[i].scale.x = value * 0.1;
-
-      // var hue = i/this.analyser.frequencyBinCount * 360;
-     // drawContext.fillStyle = 'hsl(' + hue + ', 100%, 50%)';
-      // if( value > 7) {
-      //   that.objArray[i].children[0].material.color.setHex( 0x157cd6);
-      //   // that.objArray[i].children[0].material.color.setHex( 0x800000);
-      // }
-      // else if (value > 30 && value <= 37) {
-      //   that.objArray[i].children[0].material.color.setHex( 0x578adb);
-      //   // that.objArray[i].children[0].material.color.setHex( 0xcc0000);
-      // } else if (value < 30 && value > 20 ){
-      //   that.objArray[i].children[0].material.color.setHex( 0x9ec3ff);
-      //   // that.objArray[i].children[0].material.color.setHex( 0xe60000);
-      // } else if (value < 20 && value > 10) {
-      //    that.objArray[i].children[0].material.color.setHex( 0xbec9db);
-      //    // that.objArray[i].children[0].material.color.setHex( 0xff3300);
-      // } else {
-      //     that.objArray[i].children[0].material.color.setHex( 0x000000);
-      //     // that.objArray[i].children[0].material.color.setHex( 0xff3333);
-      // }
-    }
-  } 
-
-
-  renderFrame();
-}
-
-
-
-//helper --> can check material of object directly 
-
+/* harmony default export */ __webpack_exports__["default"] = (state);
 
 //bottom of file
 
@@ -44684,28 +44490,27 @@ Visualizer.prototype.processAudio = function() {
 
 const visualMediator = function() {
 
-  // constructor(){
-  //  this.state = 'disk';
-  // }
-  // let default = 'disk';
-  let state;
+    // constructor(){
+    //  this.state = 'disk';
+    // }
+    // let default = 'disk';
+    let state;
 
-  return {
+    return {
 
-	  init: function() {
-		  this.state = 'disk';
-		  console.log('howdy');
+        init: function() {
+            this.state = 'disk';
+        },
 
-	  },
+        setVisualState: function(obj) {
+            this.state = obj;
+        },
 
-	  
+        checkState: function() {
+        	return this.state;
+        }
 
-	  setVisualState: function(obj) {
-	  	console.log(obj);
-	  	this.state = obj;
-	  }
-
-  }
+    }
 
 };
 
@@ -44716,6 +44521,245 @@ const visualMediator = function() {
 
 
 /* harmony default export */ __webpack_exports__["a"] = (visualMediator);
+
+/***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__objectFactory__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_three__ = __webpack_require__(0);
+
+
+
+
+// window.onload = () => {
+//   // let viz = new Visualizer();
+//   let viz  =  new Visualizer();
+//   viz.initialize();
+//   viz.processAudio();
+//   let med = visualMediator();
+
+//   med.init()
+//   med.setVisualState('spike');
+//   console.log(med.state);
+
+//   //object set c = [...click]
+
+// };
+
+function Visualizer() {
+    //set some constants
+
+    //(at this time) arbitrary number of bars
+    this.objNum = 60;
+    // //store 3d objects to be manipulated 
+    this.objArray = new Array();
+    // // body...
+    this.state = __WEBPACK_IMPORTED_MODULE_1__index__["default"];
+    this.scene;
+    this.camera;
+    this.renderer;
+    this.controls;
+    this.analyser;
+}
+
+Visualizer.prototype.receiveState = function(newState) {
+    this.state = newState;
+}
+
+
+Visualizer.prototype.initialize = function() {
+    let scene, camera, renderer;
+    let geometry, material, mesh;
+
+    this.scene = new __WEBPACK_IMPORTED_MODULE_2_three__["a" /* Scene */]();
+
+
+    let HEIGHT = window.innerHeight;
+    let WIDTH = window.innerWidth;
+
+    this.renderer = new __WEBPACK_IMPORTED_MODULE_2_three__["b" /* WebGLRenderer */]({ antialias: true, canvas: document.getElementById('canvas') });
+
+    this.renderer.setSize(WIDTH, HEIGHT / 1.5);
+
+    this.renderer.setClearColor(0x090909);
+
+    this.renderer.setPixelRatio(window.devicePixelRatio);
+
+    this.scene = new __WEBPACK_IMPORTED_MODULE_2_three__["a" /* Scene */]();
+
+
+    // this.camera = new THREE.PerspectiveCamera( 42, WIDTH / HEIGHT, 1, 10000);
+    // this.camera.position.z = 6000;
+    // this.camera.position.x = -WIDTH * 5 ;
+
+    this.camera = new __WEBPACK_IMPORTED_MODULE_2_three__["c" /* PerspectiveCamera */](60, window.innerWidth / window.innerHeight, 1, 10000);
+    this.camera.position.z = 1800;
+
+
+
+    //updating the camera
+
+
+    geometry = new __WEBPACK_IMPORTED_MODULE_2_three__["d" /* TetrahedronBufferGeometry */](550);
+    material = new __WEBPACK_IMPORTED_MODULE_2_three__["e" /* MeshLambertMaterial */]({ color: 0x2f4f4f });
+
+    mesh = new __WEBPACK_IMPORTED_MODULE_2_three__["f" /* Mesh */](geometry, material);
+    mesh.rotation.x += 0.21;
+    mesh.rotation.y += 0.52;
+    mesh.rotation.z += 0.75;
+    mesh.position.set(0, 0, -1000)
+    // this.scene.add(mesh);
+
+    //field of anti-tank barriers => lay out a grid, and jump position up/down. plus size
+
+
+    //light, camera, action
+
+    const light = new __WEBPACK_IMPORTED_MODULE_2_three__["g" /* AmbientLight */](0xffffbb, 0.9);
+    this.scene.add(light);
+
+    const pointLight = new __WEBPACK_IMPORTED_MODULE_2_three__["h" /* PointLight */](0xffffbb, 0.8);
+    this.scene.add(pointLight);
+
+    // const directLight = new THREE.DirectionalLight(0xffffbb, 0.3);
+    // this.scene.add(directLight);
+
+    var hemiLight = new __WEBPACK_IMPORTED_MODULE_2_three__["i" /* HemisphereLight */](0xffffbb, 0x080820, 1);
+    this.scene.add(light);
+
+
+    let that = this;
+
+    // function animate() {
+    //     requestAnimationFrame( animate );
+
+    //     mesh.rotation.x += 0.01;
+    //     mesh.rotation.y += 0.02;
+
+    //     that.renderer.render(that.scene, that.camera );
+    // }
+    // animate();
+
+    const _addtoscene = (arg) => {
+        this.scene.add(arg);
+    };
+
+    const factory = (function() {
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__objectFactory__["a" /* default */])(that, _addtoscene);
+
+    }).bind(this);
+    factory();
+};
+
+
+
+
+
+
+
+Visualizer.prototype.processAudio = function() {
+
+    let analyser;
+    const context = new AudioContext();
+    const audio = document.getElementById('audio-player');
+
+    const audioSource = context.createMediaElementSource(audio);
+    audioSource.crossOrigin = "anonymous";
+
+
+    this.analyser = context.createAnalyser();
+
+    // this.analyser.fftSize = 2048;
+    this.analyser.smoothingTimeConstant = 0.8;
+
+    audioSource.connect(this.analyser);
+    //connect to actually hear sound when played
+    audioSource.connect(context.destination);
+
+    var frequencyData = new Uint8Array(this.analyser.frequencyBinCount);
+
+
+    let that = this;
+
+
+    function renderFrame() {
+        requestAnimationFrame(renderFrame);
+
+        that.analyser.getByteFrequencyData(frequencyData);
+
+        const offset = Math.round(frequencyData.length / that.objNum);
+
+        that.renderer.render(that.scene, that.camera);
+
+        for (var i = 0; i < that.objNum; i++) {
+            let value = frequencyData[i * offset] / 10;
+
+
+            //bullshit, don't do this
+            //(checking that it's a group though)
+            if (that.objArray[i].children[0]) {
+                value = value < 10 ? 10 : value;
+                that.objArray[i].scale.z = value / 10;
+                that.objArray[i].children[0].material.color.setHex(0x157cd6);
+            } else {
+
+                that.objArray[i].material.color.setHex(0x157cd6);
+                value = value < 1 ? 1 : value;
+                that.objArray[i].scale.y = value;
+                that.objArray[i].scale.z = value;
+
+                // ????
+                that.objArray[i].scale.x = value * 0.1;
+            }
+
+
+            // //icicle values
+
+
+
+            // that.objArray[i].scale.x = value * 0.1;
+
+            // var hue = i/this.analyser.frequencyBinCount * 360;
+            // drawContext.fillStyle = 'hsl(' + hue + ', 100%, 50%)';
+            // if( value > 7) {
+            //   that.objArray[i].children[0].material.color.setHex( 0x157cd6);
+            //   // that.objArray[i].children[0].material.color.setHex( 0x800000);
+            // }
+            // else if (value > 30 && value <= 37) {
+            //   that.objArray[i].children[0].material.color.setHex( 0x578adb);
+            //   // that.objArray[i].children[0].material.color.setHex( 0xcc0000);
+            // } else if (value < 30 && value > 20 ){
+            //   that.objArray[i].children[0].material.color.setHex( 0x9ec3ff);
+            //   // that.objArray[i].children[0].material.color.setHex( 0xe60000);
+            // } else if (value < 20 && value > 10) {
+            //    that.objArray[i].children[0].material.color.setHex( 0xbec9db);
+            //    // that.objArray[i].children[0].material.color.setHex( 0xff3300);
+            // } else {
+            //     that.objArray[i].children[0].material.color.setHex( 0x000000);
+            //     // that.objArray[i].children[0].material.color.setHex( 0xff3333);
+            // }
+        }
+    }
+
+
+    renderFrame();
+}
+
+
+/* harmony default export */ __webpack_exports__["a"] = (Visualizer);
+
+
+
+
+
+
+
+
+
+//bottom of file
 
 /***/ })
 /******/ ]);

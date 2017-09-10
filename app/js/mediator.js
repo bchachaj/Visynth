@@ -2,28 +2,27 @@
 
 const visualMediator = function() {
 
-  // constructor(){
-  //  this.state = 'disk';
-  // }
-  // let default = 'disk';
-  let state;
+    // constructor(){
+    //  this.state = 'disk';
+    // }
+    // let default = 'disk';
+    let state;
 
-  return {
+    return {
 
-	  init: function() {
-		  this.state = 'disk';
-		  console.log('howdy');
+        init: function() {
+            this.state = 'disk';
+        },
 
-	  },
+        setVisualState: function(obj) {
+            this.state = obj;
+        },
 
-	  
+        checkState: function() {
+        	return this.state;
+        }
 
-	  setVisualState: function(obj) {
-	  	console.log(obj);
-	  	this.state = obj;
-	  }
-
-  }
+    }
 
 };
 
