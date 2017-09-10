@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Boombox</title>
     <link rel="stylesheet" href="styles.css">
-	
+	<link href="https://fonts.googleapis.com/css?family=Bungee+Hairline" rel="stylesheet">
     <style>
 		body {
 			display: flex;
@@ -15,28 +15,72 @@
 
     	canvas {
     		background: none;
-        position: absolute;
-        top: 0;
-        z-index: -1;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: -1;
+        /*top: 150px;*/
+        /*right: 0;*/
+        /*z-index: -1;*/
     	}
+
+        h1 {
+            font-family: 'Bungee Hairline', cursive;
+            color: lightblue;
+            padding-left: 50px;
+        }
+
+        audio::-webkit-media-controls-panel {
+            background: none;
+        }
+
+        audio::-webkit-media-controls-play-button {
+            background: none;
+            color: white;
+
+        }
+
+         audio::-webkit-media-controls-play-button > * { 
+            background: white;
+            color: white;
+         }
+
+
+         input {
+            display: none;
+         }
+
+         audio {
+            width: 250px;
+            margin-left: 250px;
+         }
+
+
     </style>
 </head>
 
 <body>
-    <h1>HIGH DEFINITION</h1>
+    <h1>Blitzynth</h1>
     <div class="boom-container">
         <input type="file" id="input"></input>
         <audio id="audio-player" src="app/assets/track2.mp3" controls></audio>
-        <canvas id="canvas"></canvas>
 
         <!-- <canvas id="testing" height="300" width="400"></canvas> -->
 
 
     </div>
+
+
+
+    <canvas id="canvas"></canvas>
+
     <!-- <script>
 	  var div = document.createElement('div');
 	  return ('draggable' in div) || ('ondragstart' in div && 'ondrop' in div);
 	</script> -->
+
     <script src="./app/js/bundle.js"></script>
     <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.js"></script> -->
     <script>

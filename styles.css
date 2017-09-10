@@ -1,8 +1,8 @@
 body {
-  background: black;
+  /*background: black;*/
   overflow: hidden;
   font-family: sans-serif;
-  background: lime;
+  /*background: lime;*/
 }
 
 h1 {
@@ -22,10 +22,12 @@ h1 {
 	position: absolute;
 	top: 15px;
 	left: 15px;
-	z-index: 999;
+	z-index: 99999;
 }
 
 .boom-container {
   display: flex;
   align-items: center;
 }
+
+
