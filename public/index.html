@@ -1,0 +1,49 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Visynth</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Hairline" rel="stylesheet">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="boom-container">
+        <nav>
+            <h1>Vizynth</h1>
+            <a class="credit" href="http://github.com/bchachaj/visynth">Github Link</a>
+            <input type="file" id="input"></input>
+            <audio id="audio-player" src="app/assets/disclosure.mp3" controls></audio>
+            <p class="credit">* Music courtesy of <a href="http://bensound.com">www.bensound.com</a></p>
+        </nav>
+        <aside class="viz-options">
+            <button class="viz-button disk" data-type="disk">Slab</button>
+            <button class="viz-button spike" data-type="spike">Spike</button>
+            <button class="viz-button next" data-type="next">Stack</button>
+        </aside>
+
+    </div>
+    <canvas id="canvas"></canvas>
+ 
+
+    <script src="./app/js/bundle.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyC2SWC3ZI4-mxocGQ9XQmLPYRKnxqmSxLY",
+        authDomain: "visynth-b57cd.firebaseapp.com",
+        databaseURL: "https://visynth-b57cd.firebaseio.com",
+        projectId: "visynth-b57cd",
+        storageBucket: "",
+        messagingSenderId: "217513847441"
+    };
+    firebase.initializeApp(config);
+    </script>
+</body>
+
+</html>

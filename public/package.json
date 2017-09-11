@@ -1,0 +1,18 @@
+{
+  "name": "boombox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "browser-sync start --server --files \"css/*.css\" webpack --w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "browser-sync": "^2.18.13",
+    "three": "^0.87.1",
+    "three-orbit-controls": "^82.1.0"
+  }
+}
