@@ -91,7 +91,6 @@ Visualizer.prototype.processAudio = function() {
     const audioSource = context.createMediaElementSource(audio);
     audioSource.crossOrigin = "anonymous";
 
-
     this.analyser = context.createAnalyser();
 
     this.analyser.fftSize = 2048;
@@ -132,7 +131,6 @@ Visualizer.prototype.processAudio = function() {
 
         }
     }
-
 
     renderFrame();
 };

@@ -1,15 +1,10 @@
 import * as THREE from 'three';
 import objectFactory from './objectFactory';
-import visualMediator from './mediator';
 import Visualizer from './visualizer';
 import visualizerTypes from './visualizerTypes';
 
-//med.state === what objects to show
-//
 const defaultState = 'disk';
-
 let state = defaultState;
-
 const viz = new Visualizer();
 
 window.onload = () => {
@@ -17,7 +12,6 @@ window.onload = () => {
   viz.state = state;
   viz.generateObjects();
   viz.processAudio();
-  //object set c = [...click]
 
 };
 
@@ -38,12 +32,7 @@ vizToggles.forEach((button) => {
 });
 
 
-// const handleStateChange = (data, state) => {
-//   debugger;
-//   visualMediator().setVisualState(data);
-// };
 
-//end event handling
 
 export default state;
 
