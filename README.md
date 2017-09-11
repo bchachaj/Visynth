@@ -1,9 +1,11 @@
 ### Visynth
 
+Live Link: https://visynth-b57cd.firebaseapp.com
+
 ### 3D Audio Visualization
 This project takes advantage of the Web Audio API to render three dimensional animations driven by audio frequencies. Three dimensional animations created by use of Three.js
 
-### Functionality 
+### Functionality
 
 Three easy steps to get started:
 
