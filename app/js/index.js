@@ -4,13 +4,13 @@ import visualMediator from './mediator';
 import Visualizer from './visualizer';
 import visualizerTypes from './visualizerTypes';
 
-//med.state === what objects to show 
+//med.state === what objects to show
 //
 const defaultState = 'disk';
 
 let state = defaultState;
 
-const viz  =  new Visualizer();
+const viz = new Visualizer();
 
 window.onload = () => {
   viz.initialize();
@@ -22,7 +22,7 @@ window.onload = () => {
 };
 
 
-//event handling 
+//event handling
 const vizToggles = document.querySelectorAll('.viz-button');
 
 vizToggles.forEach((button) => {
@@ -43,23 +43,8 @@ vizToggles.forEach((button) => {
 //   visualMediator().setVisualState(data);
 // };
 
-//end event handling 
+//end event handling
 
 export default state;
 
 //bottom of file
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

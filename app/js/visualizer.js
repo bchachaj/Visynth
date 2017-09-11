@@ -1,7 +1,7 @@
 import objectFactory from './objectFactory';
 import state from './index';
 import * as THREE from 'three';
-
+const OrbitControls = require( 'three-orbit-controls' )( THREE );
 
 function Visualizer() {
 
@@ -19,7 +19,7 @@ function Visualizer() {
 
 Visualizer.prototype.initialize = function() {
     let scene, camera, renderer;
-    let geometry, material, mesh;
+    let geometry, material, mesh, controls;
 
     this.scene = new THREE.Scene();
 
@@ -27,7 +27,12 @@ Visualizer.prototype.initialize = function() {
     let HEIGHT = window.innerHeight;
     let WIDTH = window.innerWidth;
 
-    this.renderer = new THREE.WebGLRenderer({ antialias: true, canvas: document.getElementById('canvas') });
+    this.renderer = new THREE.WebGLRenderer({
+     antialias: true,
+     canvas: document.getElementById('canvas')
+
+      });
+
     this.renderer.setSize(WIDTH, HEIGHT);
     this.renderer.setClearColor(0x090909);
     this.renderer.setPixelRatio(window.devicePixelRatio);
@@ -36,6 +41,8 @@ Visualizer.prototype.initialize = function() {
 
     this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 10000);
     this.camera.position.z = 1800;
+
+    // this.camera.lookAt(window.innerWidth / 0.5, -165, 250);
 
     const light = new THREE.AmbientLight(0xffffbb, 0.9);
     this.scene.add(light);
@@ -46,9 +53,11 @@ Visualizer.prototype.initialize = function() {
     // const directLight = new THREE.DirectionalLight(0xffffbb, 0.3);
     // this.scene.add(directLight);
 
-    var hemiLight = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
+    const hemiLight = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
     this.scene.add(light);
 
+    // this.controls = new OrbitControls(this.camera);
+    // controls.update();
 
     let that = this;
 
@@ -68,7 +77,7 @@ Visualizer.prototype.generateObjects = function() {
 
     }).bind(this);
     factory();
-}
+};
 
 
 
@@ -85,7 +94,7 @@ Visualizer.prototype.processAudio = function() {
 
     this.analyser = context.createAnalyser();
 
-    // this.analyser.fftSize = 2048;
+    this.analyser.fftSize = 2048;
     this.analyser.smoothingTimeConstant = 0.8;
 
     audioSource.connect(this.analyser);
@@ -97,14 +106,22 @@ Visualizer.prototype.processAudio = function() {
 
     let that = this;
 
+    // this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+    // this.controls.addEventListener( 'change', renderFrame );
+    // this.controls.autoRotate = true;
+    // this.controls.target.set(100,100,100);
+    // this.controls.enableZoom = true;
+    
+    this.camera.lookAt(this.objArray[18].position);
 
     function renderFrame() {
         requestAnimationFrame(renderFrame);
-
-        that.analyser.getByteFrequencyData(frequencyData)
+        // that.controls.update();
+    // that.camera.lookAt(that.objArray[17].position);
+        that.analyser.getByteFrequencyData(frequencyData);
         const offset = Math.round(frequencyData.length / that.objNum);
         that.renderer.render(that.scene, that.camera);
-
+        // that.controls.update();
         for (var i = 0; i < that.objNum; i++) {
             let value = frequencyData[i * offset] / 10;
 
@@ -118,7 +135,8 @@ Visualizer.prototype.processAudio = function() {
 
 
     renderFrame();
-}
+};
+
 
 
 export default Visualizer;

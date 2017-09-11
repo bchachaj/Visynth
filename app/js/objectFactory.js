@@ -18,7 +18,7 @@ function objectFactory(_this, scene) {
 
         // assign array position to new 3d objects
         let assignment;
-        assignment = new THREE.Mesh(type.geometry, type.material)
+        assignment = new THREE.Mesh(type.geometry, type.material);
 
 
         visualizer.objArray[i] = assignment;
@@ -46,6 +46,7 @@ function objectFactory(_this, scene) {
 
         let that = visualizer;
 
+        that.objArray[i].rotation.x = 0;
         function animate() {
             requestAnimationFrame(animate);
             that.objArray[i].rotation.x += 0.005;
