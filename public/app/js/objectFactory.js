@@ -35,7 +35,7 @@ function objectFactory(_this, scene) {
         that.objArray[i].rotation.x = 0;
         function animate() {
             requestAnimationFrame(animate);
-            that.objArray[i].rotation.x += 0.005;
+            thisObject.rotation.x += 0.005;
 
         }
         animate();

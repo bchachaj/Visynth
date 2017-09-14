@@ -33,10 +33,10 @@ const visualizerTypes = {
     next: {
         geometry: new THREE.TetrahedronBufferGeometry(19.7),
         material: new THREE.MeshStandardMaterial({
-            color: 0x2fd4f4,
-            metalness: 0.9, 
-            roughness: 0.2
-
+            color: 0xffa500,
+            roughness: 1, 
+            metalness: 0.9
+         
         }),
         position: {
             y: Math.random() * 1000 - 500,

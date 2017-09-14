@@ -44404,7 +44404,7 @@ function objectFactory(_this, scene) {
         that.objArray[i].rotation.x = 0;
         function animate() {
             requestAnimationFrame(animate);
-            that.objArray[i].rotation.x += 0.005;
+            thisObject.rotation.x += 0.005;
 
         }
         animate();
@@ -44476,10 +44476,10 @@ const visualizerTypes = {
     next: {
         geometry: new __WEBPACK_IMPORTED_MODULE_0_three__["TetrahedronBufferGeometry"](19.7),
         material: new __WEBPACK_IMPORTED_MODULE_0_three__["MeshStandardMaterial"]({
-            color: 0x2fd4f4,
-            metalness: 0.9, 
-            roughness: 0.2
-
+            color: 0xffa500,
+            roughness: 1, 
+            metalness: 0.9
+         
         }),
         position: {
             y: Math.random() * 1000 - 500,
@@ -44569,24 +44569,24 @@ Visualizer.prototype.initialize = function() {
     this.scene = new __WEBPACK_IMPORTED_MODULE_2_three__["Scene"]();
 
     this.camera = new __WEBPACK_IMPORTED_MODULE_2_three__["PerspectiveCamera"](60, window.innerWidth / window.innerHeight, 1, 10000);
-    this.camera.position.z = 1800;
+    this.camera.position.z = 2800;
 
     // this.camera.lookAt(window.innerWidth / 0.5, -165, 250);
 
-    const light = new __WEBPACK_IMPORTED_MODULE_2_three__["AmbientLight"](0xffffbb, 0.9);
+    const light = new __WEBPACK_IMPORTED_MODULE_2_three__["AmbientLight"](0xffffbb, 2);
     this.scene.add(light);
     const l2 = new __WEBPACK_IMPORTED_MODULE_2_three__["HemisphereLight"](0xffffbb, 0.9);
     this.scene.add(l2);
     // const l3 = new THREE.AmbientLight(0xffffbb, 0.9, 2);
     // this.scene.add(l3);
 
-    const pointLight = new __WEBPACK_IMPORTED_MODULE_2_three__["PointLight"](0xffffbb, 0.8);
-    this.scene.add(pointLight);
+    const pointLight = new __WEBPACK_IMPORTED_MODULE_2_three__["PointLight"](0xffffbb, 0.5);
+    // this.scene.add(pointLight);
 
-    // const directLight = new THREE.DirectionalLight(0xffffbb, 0.3);
+    const directLight = new __WEBPACK_IMPORTED_MODULE_2_three__["DirectionalLight"](0xffffbb, 0.3);
     // this.scene.add(directLight);
 
-    const hemiLight = new __WEBPACK_IMPORTED_MODULE_2_three__["HemisphereLight"](0xffffbb, 0x080820, 1);
+    const hemiLight = new __WEBPACK_IMPORTED_MODULE_2_three__["HemisphereLight"](0xffffff, 0x080820, 1);
     this.scene.add(hemiLight);
 
     // this.controls = new OrbitControls(this.camera);
@@ -44631,7 +44631,7 @@ Visualizer.prototype.processAudio = function() {
 
     audioSource.connect(this.analyser);
     //connect to actually hear sound when played
-    audioSource.connect(context.destination);
+    // audioSource.connect(context.destination);
 
     var frequencyData = new Uint8Array(this.analyser.frequencyBinCount);
 
@@ -44644,21 +44644,21 @@ Visualizer.prototype.processAudio = function() {
     // this.controls.target.set(100,100,100);
     // this.controls.enableZoom = true;
     
-    var radius = 1800;
+    var radius = 2800;
     var theta = 0;
 
     function renderFrame() {
 
      theta += 0.1;
      that.camera.position.x = radius * Math.sin( __WEBPACK_IMPORTED_MODULE_2_three__["Math"].degToRad( theta / 2 ));
-     that.camera.position.y = radius * Math.sin( __WEBPACK_IMPORTED_MODULE_2_three__["Math"].degToRad( theta / 5 ));
+     // that.camera.position.y = radius * Math.sin( THREE.Math.degToRad( theta / 2 ));
      // that.camera.position.z = radius * Math.cos( THREE.Math.degToRad( theta ));
      that.camera.lookAt(that.objArray[30].position);
      requestAnimationFrame(renderFrame);
         // that.controls.update();
     // that.camera.lookAt(that.objArray[17].position);
         that.analyser.getByteFrequencyData(frequencyData);
-        const offset = Math.round(frequencyData.length / that.objNum / 2);
+        const offset = Math.round(frequencyData.length / that.objNum / 3);
         that.renderer.render(that.scene, that.camera);
         // that.controls.update();
 

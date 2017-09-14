@@ -41,24 +41,24 @@ Visualizer.prototype.initialize = function() {
     this.scene = new THREE.Scene();
 
     this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 10000);
-    this.camera.position.z = 1800;
+    this.camera.position.z = 2800;
 
     // this.camera.lookAt(window.innerWidth / 0.5, -165, 250);
 
-    const light = new THREE.AmbientLight(0xffffbb, 0.9);
+    const light = new THREE.AmbientLight(0xffffbb, 2);
     this.scene.add(light);
     const l2 = new THREE.HemisphereLight(0xffffbb, 0.9);
     this.scene.add(l2);
     // const l3 = new THREE.AmbientLight(0xffffbb, 0.9, 2);
     // this.scene.add(l3);
 
-    const pointLight = new THREE.PointLight(0xffffbb, 0.8);
-    this.scene.add(pointLight);
+    const pointLight = new THREE.PointLight(0xffffbb, 0.5);
+    // this.scene.add(pointLight);
 
-    // const directLight = new THREE.DirectionalLight(0xffffbb, 0.3);
+    const directLight = new THREE.DirectionalLight(0xffffbb, 0.3);
     // this.scene.add(directLight);
 
-    const hemiLight = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x080820, 1);
     this.scene.add(hemiLight);
 
     // this.controls = new OrbitControls(this.camera);
@@ -103,7 +103,7 @@ Visualizer.prototype.processAudio = function() {
 
     audioSource.connect(this.analyser);
     //connect to actually hear sound when played
-    audioSource.connect(context.destination);
+    // audioSource.connect(context.destination);
 
     var frequencyData = new Uint8Array(this.analyser.frequencyBinCount);
 
@@ -116,21 +116,21 @@ Visualizer.prototype.processAudio = function() {
     // this.controls.target.set(100,100,100);
     // this.controls.enableZoom = true;
     
-    var radius = 1800;
+    var radius = 2800;
     var theta = 0;
 
     function renderFrame() {
 
      theta += 0.1;
      that.camera.position.x = radius * Math.sin( THREE.Math.degToRad( theta / 2 ));
-     that.camera.position.y = radius * Math.sin( THREE.Math.degToRad( theta / 5 ));
+     // that.camera.position.y = radius * Math.sin( THREE.Math.degToRad( theta / 2 ));
      // that.camera.position.z = radius * Math.cos( THREE.Math.degToRad( theta ));
      that.camera.lookAt(that.objArray[30].position);
      requestAnimationFrame(renderFrame);
         // that.controls.update();
     // that.camera.lookAt(that.objArray[17].position);
         that.analyser.getByteFrequencyData(frequencyData);
-        const offset = Math.round(frequencyData.length / that.objNum / 2);
+        const offset = Math.round(frequencyData.length / that.objNum / 3);
         that.renderer.render(that.scene, that.camera);
         // that.controls.update();
 
