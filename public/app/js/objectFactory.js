@@ -3,14 +3,14 @@ import state from './index';
 
 import visualizerTypes from './visualizerTypes';
 
-
+const objectPool = [];
 
 function objectFactory(_this, scene) {
 
     let visualizer = _this;
 
-    scene.background = new THREE.Color(0xffffff);
-    scene.fog = new THREE.Fog(0xffffff, 1, 10000);
+    // scene.background = new THREE.Color(0xffffff);
+    // scene.fog = new THREE.Fog(0xffffff, 1, 10000);
 
     for (let i = 0; i < visualizer.objNum; i++) {
 

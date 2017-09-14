@@ -44328,23 +44328,26 @@ window.onload = () => {
   viz.state = state;
   viz.generateObjects();
   viz.processAudio();
-
+  vizToggles[0].classList.add('highlighted');
 };
 
 
 //event handling
 const vizToggles = document.querySelectorAll('.viz-button');
+let css = viz.state;
 
 vizToggles.forEach((button) => {
   button.addEventListener('click', () => {
     viz.state = button.dataset.type;
     viz.initialize();
-    viz.generateObjects();
-  });
 
-  if(button.dataset.type === viz.state) {
+    viz.generateObjects();
+    for(let i = 0; i < vizToggles.length; i++) {
+      vizToggles[i].classList.remove('highlighted');
+    }
     button.classList.add('highlighted');
-  }
+
+  });
 });
 
 
@@ -44368,14 +44371,14 @@ vizToggles.forEach((button) => {
 
 
 
-
+const objectPool = [];
 
 function objectFactory(_this, scene) {
 
     let visualizer = _this;
 
-    scene.background = new __WEBPACK_IMPORTED_MODULE_0_three__["Color"](0xffffff);
-    scene.fog = new __WEBPACK_IMPORTED_MODULE_0_three__["Fog"](0xffffff, 1, 10000);
+    // scene.background = new THREE.Color(0xffffff);
+    // scene.fog = new THREE.Fog(0xffffff, 1, 10000);
 
     for (let i = 0; i < visualizer.objNum; i++) {
 
