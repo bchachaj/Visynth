@@ -1,4 +1,4 @@
-import objectFactory from './objectFactory';
+    import viewFactory from './objectFactory';
 import state from './index';
 import * as THREE from 'three';
 const OrbitControls = require( 'three-orbit-controls' )( THREE );
@@ -73,7 +73,7 @@ Visualizer.prototype.generateObjects = function() {
     };
 
     const factory = (function() {
-        objectFactory(that, _addtoscene);
+        viewFactory(that, _addtoscene);
 
     }).bind(this);
     factory();
@@ -111,9 +111,9 @@ Visualizer.prototype.processAudio = function() {
     // this.controls.target.set(100,100,100);
     // this.controls.enableZoom = true;
     
-    this.camera.lookAt(this.objArray[18].position);
 
     function renderFrame() {
+    that.camera.lookAt(that.objArray[18].position);
         requestAnimationFrame(renderFrame);
         // that.controls.update();
     // that.camera.lookAt(that.objArray[17].position);

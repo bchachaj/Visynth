@@ -13,6 +13,7 @@
   "dependencies": {
     "browser-sync": "^2.18.13",
     "three": "^0.87.1",
-    "three-orbit-controls": "^82.1.0"
+    "three-orbit-controls": "^82.1.0",
+    "tween": "^0.9.0"
   }
 }

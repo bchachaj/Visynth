@@ -44373,6 +44373,85 @@ vizToggles.forEach((button) => {
 
 const objectPool = [];
 
+const place = { next: {
+        geometry: new __WEBPACK_IMPORTED_MODULE_0_three__["TetrahedronBufferGeometry"](19.7),
+        material: new __WEBPACK_IMPORTED_MODULE_0_three__["MeshPhongMaterial"]({
+            color: 0xffffff,
+
+
+        }),
+        position: {
+            y: Math.random() * 1000 - 500,
+            z: Math.random() * 700 - 500,
+        },
+        rotation: {
+            x: Math.random() * 2 * Math.PI,
+            y: Math.random() * 2 * Math.PI
+        },
+        group: new __WEBPACK_IMPORTED_MODULE_0_three__["Group"]()
+    }
+};
+
+function viewFactory(_this, scene) {
+
+    let visualizer = _this;
+
+    // scene.background = new THREE.Color(0xffffff);
+    // scene.fog = new THREE.Fog(0xffffff, 1, 10000);
+
+    for (let i = 0; i < visualizer.objNum; i++) {
+
+        let type = __WEBPACK_IMPORTED_MODULE_2__visualizerTypes__["a" /* default */]["next"];
+
+        // assign array position to new 3d objects
+        let assignment;
+
+        assignment = new __WEBPACK_IMPORTED_MODULE_0_three__["Mesh"](type.geometry, type.material);
+
+        visualizer.objArray[i] = assignment;
+        let thisObject = visualizer.objArray[i];
+        //NB: probably varying positions
+
+
+        thisObject.position.set(((i - visualizer.objNum) * 50.3 + (window.innerWidth / 0.65)), -165, (5 * visualizer.objNum));
+     
+
+        // let x = type.position.x;
+
+        // if(x){
+           // thisObject.position.x.set(type.position.x);
+        // thisObject.position.set((i - visualizer.objNum) * 50.3 + (window.innerWidth / 0.65), type.position.y, (5 * visualizer.objNum));
+            // console.log(type.position);
+            // thisObject.rotation.x += type.rotation;
+            // thisObject.rotation.y += 0.01;
+        // }
+        // }
+
+        let that = visualizer;
+        that.objArray[i].rotation.x = 0;
+        function animate() {
+            requestAnimationFrame(animate);
+            that.objArray[i].rotation.x += 0.005;
+
+        }
+        animate();
+
+        scene.background = new __WEBPACK_IMPORTED_MODULE_0_three__["Color"](0xffffff);
+        scene.fog = new __WEBPACK_IMPORTED_MODULE_0_three__["Fog"](0xffffff, 1, 10000);
+
+        // mesh.matrixAutoUpdate = false;
+        // mesh.updateMatrix();
+        // group.add(mesh);
+        // thisObject = group;
+        // scene.add( group );
+
+        scene(thisObject);
+
+    }
+
+}
+
+
 function objectFactory(_this, scene) {
 
     let visualizer = _this;
@@ -44382,12 +44461,12 @@ function objectFactory(_this, scene) {
 
     for (let i = 0; i < visualizer.objNum; i++) {
 
-        let type = __WEBPACK_IMPORTED_MODULE_2__visualizerTypes__["a" /* default */][visualizer.state];
+        let type = __WEBPACK_IMPORTED_MODULE_2__visualizerTypes__["a" /* default */]["next"];
 
         // assign array position to new 3d objects
         let assignment;
-        assignment = new __WEBPACK_IMPORTED_MODULE_0_three__["Mesh"](type.geometry, type.material);
 
+        assignment = new __WEBPACK_IMPORTED_MODULE_0_three__["Mesh"](type.geometry, type.material);
 
         visualizer.objArray[i] = assignment;
         let thisObject = visualizer.objArray[i];
@@ -44395,21 +44474,20 @@ function objectFactory(_this, scene) {
 
 
         thisObject.position.set(((i - visualizer.objNum) * 50.3 + (window.innerWidth / 0.65)), -165, (5 * visualizer.objNum));
+     
 
+        // let x = type.position.x;
 
-        //    // thisObject.position.x.set(type.position.x);
-        //    // thisObject.position.y.set(type.position.y);
+        // if(x){
+           // thisObject.position.x.set(type.position.x);
+        // thisObject.position.set((i - visualizer.objNum) * 50.3 + (window.innerWidth / 0.65), type.position.y, (5 * visualizer.objNum));
+            // console.log(type.position);
+            // thisObject.rotation.x += type.rotation;
+            // thisObject.rotation.y += 0.01;
+        // }
         // }
 
-
-        // thisObject.rotation.x += type.rotation;
-
-        // thisObject.rotation.y += 0.01;
-
-
-
         let that = visualizer;
-
         that.objArray[i].rotation.x = 0;
         function animate() {
             requestAnimationFrame(animate);
@@ -44437,7 +44515,7 @@ function objectFactory(_this, scene) {
 
 
 
-/* harmony default export */ __webpack_exports__["a"] = (objectFactory);
+/* harmony default export */ __webpack_exports__["a"] = (viewFactory);
 
 
 
@@ -44465,7 +44543,7 @@ const visualizerTypes = {
     },
 
     spike: {
-        geometry: new __WEBPACK_IMPORTED_MODULE_0_three__["TetrahedronBufferGeometry"](50),
+        geometry: new __WEBPACK_IMPORTED_MODULE_0_three__["TetrahedronBufferGeometry"](19.7),
         material: new __WEBPACK_IMPORTED_MODULE_0_three__["MeshPhongMaterial"]({
             color: 0x2f49dd,
             wireframe: true
@@ -44482,8 +44560,26 @@ const visualizerTypes = {
         group: new __WEBPACK_IMPORTED_MODULE_0_three__["Group"]()
     },
 
+    ghost: {
+        geometry: new __WEBPACK_IMPORTED_MODULE_0_three__["TetrahedronBufferGeometry"](19.7),
+        material: new __WEBPACK_IMPORTED_MODULE_0_three__["MeshPhongMaterial"]({
+            color: 0xffffff,
+
+
+        }),
+        position: {
+            y: Math.random() * 1000 - 500,
+            z: Math.random() * 700 - 500,
+        },
+        rotation: {
+            x: Math.random() * 2 * Math.PI,
+            y: Math.random() * 2 * Math.PI
+        },
+        group: new __WEBPACK_IMPORTED_MODULE_0_three__["Group"]()
+    },
+
     next: {
-        geometry: new __WEBPACK_IMPORTED_MODULE_0_three__["TetrahedronBufferGeometry"](50),
+        geometry: new __WEBPACK_IMPORTED_MODULE_0_three__["TetrahedronBufferGeometry"](19.7),
         material: new __WEBPACK_IMPORTED_MODULE_0_three__["MeshPhongMaterial"]({
             color: 0xffffff,
 
@@ -44513,7 +44609,7 @@ const visualizerTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__objectFactory__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_three__ = __webpack_require__(0);
-
+    
 
 
 const OrbitControls = __webpack_require__( 5 )( __WEBPACK_IMPORTED_MODULE_2_three__ );
@@ -44626,9 +44722,9 @@ Visualizer.prototype.processAudio = function() {
     // this.controls.target.set(100,100,100);
     // this.controls.enableZoom = true;
     
-    this.camera.lookAt(this.objArray[18].position);
 
     function renderFrame() {
+    that.camera.lookAt(that.objArray[18].position);
         requestAnimationFrame(renderFrame);
         // that.controls.update();
     // that.camera.lookAt(that.objArray[17].position);

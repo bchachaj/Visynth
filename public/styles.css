@@ -60,7 +60,8 @@ h1 {
 
     h1 {
         font-family: 'Bungee Hairline', cursive;
-        color: lightblue;
+        font-size: 40px;
+        color: orange;
         padding-left: 50px;
     }
 
@@ -117,6 +118,8 @@ h1 {
         border: 1px solid white;
         transition-duration: 0.3s;
         margin: 10px;
+        font-size: 20px;
+        font-weight: bold;
     }
 
     .viz-button:hover {
