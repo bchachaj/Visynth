@@ -2,6 +2,7 @@
 import state from './index';
 import * as THREE from 'three';
 const OrbitControls = require( 'three-orbit-controls' )( THREE );
+import * as TWEEN from 'tween.js';
 
 function Visualizer() {
 
@@ -46,6 +47,10 @@ Visualizer.prototype.initialize = function() {
 
     const light = new THREE.AmbientLight(0xffffbb, 0.9);
     this.scene.add(light);
+    const l2 = new THREE.HemisphereLight(0xffffbb, 0.9);
+    this.scene.add(l2);
+    // const l3 = new THREE.AmbientLight(0xffffbb, 0.9, 2);
+    // this.scene.add(l3);
 
     const pointLight = new THREE.PointLight(0xffffbb, 0.8);
     this.scene.add(pointLight);
@@ -54,7 +59,7 @@ Visualizer.prototype.initialize = function() {
     // this.scene.add(directLight);
 
     const hemiLight = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
-    this.scene.add(light);
+    this.scene.add(hemiLight);
 
     // this.controls = new OrbitControls(this.camera);
     // controls.update();
@@ -111,24 +116,32 @@ Visualizer.prototype.processAudio = function() {
     // this.controls.target.set(100,100,100);
     // this.controls.enableZoom = true;
     
+    var radius = 1800;
+    var theta = 0;
 
     function renderFrame() {
-    that.camera.lookAt(that.objArray[18].position);
-        requestAnimationFrame(renderFrame);
+
+     theta += 0.1;
+     that.camera.position.x = radius * Math.sin( THREE.Math.degToRad( theta / 2 ));
+     that.camera.position.y = radius * Math.sin( THREE.Math.degToRad( theta / 5 ));
+     // that.camera.position.z = radius * Math.cos( THREE.Math.degToRad( theta ));
+     that.camera.lookAt(that.objArray[30].position);
+     requestAnimationFrame(renderFrame);
         // that.controls.update();
     // that.camera.lookAt(that.objArray[17].position);
         that.analyser.getByteFrequencyData(frequencyData);
-        const offset = Math.round(frequencyData.length / that.objNum);
+        const offset = Math.round(frequencyData.length / that.objNum / 2);
         that.renderer.render(that.scene, that.camera);
         // that.controls.update();
+
         for (var i = 0; i < that.objNum; i++) {
             let value = frequencyData[i * offset] / 10;
 
             value = value < 2 ? 2 : value;
             that.objArray[i].scale.y = value;
             that.objArray[i].scale.z = value;
-            that.objArray[i].scale.x = value * 0.1;
-
+            that.objArray[i].scale.x = value * 0.1; 
+           
         }
     }
 

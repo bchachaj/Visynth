@@ -8,6 +8,7 @@ let state = defaultState;
 const viz = new Visualizer();
 
 window.onload = () => {
+  // if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
   viz.initialize();
   viz.state = state;
   viz.generateObjects();

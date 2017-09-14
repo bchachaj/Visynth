@@ -1,10 +1,11 @@
 import * as THREE from 'three';
 
+
 const visualizerTypes = {
     disk: {
-        geometry: new THREE.BoxGeometry(19.7, 19.7, 19.7),
+        geometry: new THREE.BoxGeometry(29.7, 29.7, 29.7),
         material: new THREE.MeshStandardMaterial({
-            color: 0xBADA77,
+            color: 0xff0000,
             roughness: 0.2,
             metalness: 0.7
         }),
@@ -29,11 +30,12 @@ const visualizerTypes = {
         group: new THREE.Group()
     },
 
-    ghost: {
+    next: {
         geometry: new THREE.TetrahedronBufferGeometry(19.7),
-        material: new THREE.MeshPhongMaterial({
-            color: 0xffffff,
-
+        material: new THREE.MeshStandardMaterial({
+            color: 0x2fd4f4,
+            metalness: 0.9, 
+            roughness: 0.2
 
         }),
         position: {
@@ -47,11 +49,12 @@ const visualizerTypes = {
         group: new THREE.Group()
     },
 
-    next: {
-        geometry: new THREE.TetrahedronBufferGeometry(19.7),
-        material: new THREE.MeshPhongMaterial({
-            color: 0xffffff,
-
+    ghost: {
+       geometry: new THREE.BoxGeometry(39.7, 39.7, 39.7),
+        material: new THREE.MeshStandardMaterial({
+            color: 0x2fd4f4,
+            roughness: 0.2,
+            metalness: 0.7
 
         }),
         position: {
