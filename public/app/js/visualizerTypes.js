@@ -15,7 +15,7 @@ const visualizerTypes = {
     spike: {
         geometry: new THREE.TetrahedronBufferGeometry(19.7),
         material: new THREE.MeshPhongMaterial({
-            color: 0x2f49dd,
+            color: 0x32CD32,
             wireframe: true
 
         }),
@@ -32,10 +32,9 @@ const visualizerTypes = {
 
     next: {
         geometry: new THREE.TetrahedronBufferGeometry(19.7),
-        material: new THREE.MeshStandardMaterial({
-            color: 0xffa500,
-            roughness: 1, 
-            metalness: 0.9
+        material: new THREE.MeshPhongMaterial({
+            color: 0xdff500,
+            reflectivity: 1
          
         }),
         position: {

@@ -44377,27 +44377,17 @@ vizToggles.forEach((button) => {
 function objectFactory(_this, scene) {
 
     let visualizer = _this;
-
-    scene.background = new __WEBPACK_IMPORTED_MODULE_0_three__["Color"](0xffffff);
-    scene.fog = new __WEBPACK_IMPORTED_MODULE_0_three__["Fog"](0xffffff, 1, 10000);
-
     for (let i = 0; i < visualizer.objNum; i++) {
 
         let type = __WEBPACK_IMPORTED_MODULE_2__visualizerTypes__["a" /* default */][visualizer.state];
-
         // assign array position to new 3d objects
         let assignment;
-        assignment = new __WEBPACK_IMPORTED_MODULE_0_three__["Mesh"]( type.geometry, type.material);
         assignment = new __WEBPACK_IMPORTED_MODULE_0_three__["Mesh"](type.geometry, type.material);
-
 
         visualizer.objArray[i] = assignment;
         let thisObject = visualizer.objArray[i];
-        //NB: probably varying positions
-
 
         thisObject.position.set(((i - visualizer.objNum) * 50.3 + (window.innerWidth / 0.65)), -165, (5 * visualizer.objNum));
-
 
         let that = visualizer;
 
@@ -44405,19 +44395,8 @@ function objectFactory(_this, scene) {
         function animate() {
             requestAnimationFrame(animate);
             thisObject.rotation.x += 0.005;
-
         }
         animate();
-
-        scene.background = new __WEBPACK_IMPORTED_MODULE_0_three__["Color"](0xffffff);
-        scene.fog = new __WEBPACK_IMPORTED_MODULE_0_three__["Fog"](0xffffff, 1, 10000);
-
-        // mesh.matrixAutoUpdate = false;
-        // mesh.updateMatrix();
-        // group.add(mesh);
-        // thisObject = group;
-        // scene.add( group );
-
         scene(thisObject);
 
     }
@@ -44458,7 +44437,7 @@ const visualizerTypes = {
     spike: {
         geometry: new __WEBPACK_IMPORTED_MODULE_0_three__["TetrahedronBufferGeometry"](19.7),
         material: new __WEBPACK_IMPORTED_MODULE_0_three__["MeshPhongMaterial"]({
-            color: 0x2f49dd,
+            color: 0x32CD32,
             wireframe: true
 
         }),
@@ -44475,10 +44454,9 @@ const visualizerTypes = {
 
     next: {
         geometry: new __WEBPACK_IMPORTED_MODULE_0_three__["TetrahedronBufferGeometry"](19.7),
-        material: new __WEBPACK_IMPORTED_MODULE_0_three__["MeshStandardMaterial"]({
-            color: 0xffa500,
-            roughness: 1, 
-            metalness: 0.9
+        material: new __WEBPACK_IMPORTED_MODULE_0_three__["MeshPhongMaterial"]({
+            color: 0xdff500,
+            reflectivity: 1
          
         }),
         position: {
@@ -44527,158 +44505,145 @@ const visualizerTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_tween_js__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_tween_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_tween_js__);
     
-
-
-const OrbitControls = __webpack_require__( 5 )( __WEBPACK_IMPORTED_MODULE_2_three__ );
-
-
-function Visualizer() {
-
-    this.objNum = 60;
-    this.objArray = new Array();
-    this.state = __WEBPACK_IMPORTED_MODULE_1__index__["default"];
-
-    this.scene;
-    this.camera;
-    this.renderer;
-    this.controls;
-    this.analyser;
-}
-
-
-Visualizer.prototype.initialize = function() {
-    let scene, camera, renderer;
-    let geometry, material, mesh, controls;
-
-    this.scene = new __WEBPACK_IMPORTED_MODULE_2_three__["Scene"]();
-
-
-    let HEIGHT = window.innerHeight;
-    let WIDTH = window.innerWidth;
-
-    this.renderer = new __WEBPACK_IMPORTED_MODULE_2_three__["WebGLRenderer"]({
-     antialias: true,
-     canvas: document.getElementById('canvas')
-
-      });
-
-    this.renderer.setSize(WIDTH, HEIGHT);
-    this.renderer.setClearColor(0x090909);
-    this.renderer.setPixelRatio(window.devicePixelRatio);
-
-    this.scene = new __WEBPACK_IMPORTED_MODULE_2_three__["Scene"]();
-
-    this.camera = new __WEBPACK_IMPORTED_MODULE_2_three__["PerspectiveCamera"](60, window.innerWidth / window.innerHeight, 1, 10000);
-    this.camera.position.z = 2800;
-
-    // this.camera.lookAt(window.innerWidth / 0.5, -165, 250);
-
-    const light = new __WEBPACK_IMPORTED_MODULE_2_three__["AmbientLight"](0xffffbb, 2);
-    this.scene.add(light);
-    const l2 = new __WEBPACK_IMPORTED_MODULE_2_three__["HemisphereLight"](0xffffbb, 0.9);
-    this.scene.add(l2);
-    // const l3 = new THREE.AmbientLight(0xffffbb, 0.9, 2);
-    // this.scene.add(l3);
-
-    const pointLight = new __WEBPACK_IMPORTED_MODULE_2_three__["PointLight"](0xffffbb, 0.5);
-    // this.scene.add(pointLight);
-
-    const directLight = new __WEBPACK_IMPORTED_MODULE_2_three__["DirectionalLight"](0xffffbb, 0.3);
-    // this.scene.add(directLight);
-
-    const hemiLight = new __WEBPACK_IMPORTED_MODULE_2_three__["HemisphereLight"](0xffffff, 0x080820, 1);
-    this.scene.add(hemiLight);
-
-    // this.controls = new OrbitControls(this.camera);
-    // controls.update();
-
-    let that = this;
-
-};
-
-
-Visualizer.prototype.generateObjects = function() {
-
-    let that = this;
-
-    const _addtoscene = (arg) => {
-        this.scene.add(arg);
-    };
-
-    const factory = (function() {
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__objectFactory__["a" /* default */])(that, _addtoscene);
-
-    }).bind(this);
-    factory();
-};
-
-
-
-
-Visualizer.prototype.processAudio = function() {
-
-    let analyser;
-    const context = new AudioContext();
-    const audio = document.getElementById('audio-player');
-
-    const audioSource = context.createMediaElementSource(audio);
-    audioSource.crossOrigin = "anonymous";
-
-    this.analyser = context.createAnalyser();
-
-    this.analyser.fftSize = 2048;
-    this.analyser.smoothingTimeConstant = 0.8;
-
-    audioSource.connect(this.analyser);
-    //connect to actually hear sound when played
-    // audioSource.connect(context.destination);
-
-    var frequencyData = new Uint8Array(this.analyser.frequencyBinCount);
-
-
-    let that = this;
-
-    // this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-    // this.controls.addEventListener( 'change', renderFrame );
-    // this.controls.autoRotate = true;
-    // this.controls.target.set(100,100,100);
-    // this.controls.enableZoom = true;
     
-    var radius = 2800;
-    var theta = 0;
+    
+    const OrbitControls = __webpack_require__(5)(__WEBPACK_IMPORTED_MODULE_2_three__);
+    
 
-    function renderFrame() {
+    function Visualizer() {
 
-     theta += 0.1;
-     that.camera.position.x = radius * Math.sin( __WEBPACK_IMPORTED_MODULE_2_three__["Math"].degToRad( theta / 2 ));
-     // that.camera.position.y = radius * Math.sin( THREE.Math.degToRad( theta / 2 ));
-     // that.camera.position.z = radius * Math.cos( THREE.Math.degToRad( theta ));
-     that.camera.lookAt(that.objArray[30].position);
-     requestAnimationFrame(renderFrame);
-        // that.controls.update();
-    // that.camera.lookAt(that.objArray[17].position);
-        that.analyser.getByteFrequencyData(frequencyData);
-        const offset = Math.round(frequencyData.length / that.objNum / 3);
-        that.renderer.render(that.scene, that.camera);
-        // that.controls.update();
+        this.objNum = 60;
+        this.objArray = new Array();
+        this.state = __WEBPACK_IMPORTED_MODULE_1__index__["default"];
 
-        for (var i = 0; i < that.objNum; i++) {
-            let value = frequencyData[i * offset] / 10;
-
-            value = value < 2 ? 2 : value;
-            that.objArray[i].scale.y = value;
-            that.objArray[i].scale.z = value;
-            that.objArray[i].scale.x = value * 0.1; 
-           
-        }
+        this.scene;
+        this.camera;
+        this.renderer;
+        this.controls;
+        this.analyser;
     }
 
-    renderFrame();
-};
+
+    Visualizer.prototype.initialize = function() {
+        let scene, camera, renderer;
+        let geometry, material, mesh, controls;
+
+        this.scene = new __WEBPACK_IMPORTED_MODULE_2_three__["Scene"]();
+
+
+        let HEIGHT = window.innerHeight;
+        let WIDTH = window.innerWidth;
+
+        this.renderer = new __WEBPACK_IMPORTED_MODULE_2_three__["WebGLRenderer"]({
+            antialias: true,
+            canvas: document.getElementById('canvas')
+
+        });
+
+        this.renderer.setSize(WIDTH, HEIGHT);
+        this.renderer.setClearColor(0x090909);
+        this.renderer.setPixelRatio(window.devicePixelRatio);
+
+        this.scene = new __WEBPACK_IMPORTED_MODULE_2_three__["Scene"]();
+
+        this.camera = new __WEBPACK_IMPORTED_MODULE_2_three__["PerspectiveCamera"](60, window.innerWidth / window.innerHeight, 1, 10000);
+        this.camera.position.z = 1800;
+
+        // this.camera.lookAt(window.innerWidth / 0.5, -165, 250);
+
+        const light = new __WEBPACK_IMPORTED_MODULE_2_three__["AmbientLight"](0xffffbb, 0.4);
+        this.scene.add(light);
+        const l2 = new __WEBPACK_IMPORTED_MODULE_2_three__["HemisphereLight"](0xffffbb, 0.9);
+        this.scene.add(l2);
+       
+
+        const pointLight = new __WEBPACK_IMPORTED_MODULE_2_three__["PointLight"](0xffffbb, 1);
+        // this.scene.add(pointLight);
+
+        const directLight = new __WEBPACK_IMPORTED_MODULE_2_three__["DirectionalLight"](0xffffbb, 0.9);
+        // this.scene.add(directLight);
+
+        const hemiLight = new __WEBPACK_IMPORTED_MODULE_2_three__["HemisphereLight"](0xffffff, 0x080820, 1);
+        this.scene.add(hemiLight);
+
+        // this.controls = new OrbitControls(this.camera);
+        // controls.update();
+
+        let that = this;
+
+    };
+
+
+    Visualizer.prototype.generateObjects = function() {
+
+        let that = this;
+
+        const _addtoscene = (arg) => {
+            this.scene.add(arg);
+        };
+
+        const factory = (function() {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__objectFactory__["a" /* default */])(that, _addtoscene);
+
+        }).bind(this);
+        factory();
+    };
 
 
 
-/* harmony default export */ __webpack_exports__["a"] = (Visualizer);
+
+    Visualizer.prototype.processAudio = function() {
+
+        let analyser;
+        const context = new AudioContext();
+        const audio = document.getElementById('audio-player');
+
+        const audioSource = context.createMediaElementSource(audio);
+        audioSource.crossOrigin = "anonymous";
+
+        this.analyser = context.createAnalyser();
+
+        this.analyser.fftSize = 2048;
+        this.analyser.smoothingTimeConstant = 0.8;
+
+        audioSource.connect(this.analyser);
+        //connect to actually hear sound when played
+        audioSource.connect(context.destination);
+
+        var frequencyData = new Uint8Array(this.analyser.frequencyBinCount);
+        let that = this;
+
+        var radius = 800;
+        var theta = 0;
+
+        function renderFrame() {
+
+            theta += 0.1;
+            that.camera.position.x = radius * Math.sin(__WEBPACK_IMPORTED_MODULE_2_three__["Math"].degToRad(theta / 2));
+            that.camera.position.y = radius * Math.sin(__WEBPACK_IMPORTED_MODULE_2_three__["Math"].degToRad(theta / 10));
+            that.camera.lookAt(that.objArray[30].position);
+            requestAnimationFrame(renderFrame);
+            that.analyser.getByteFrequencyData(frequencyData);
+            const offset = Math.round(frequencyData.length / that.objNum / 3);
+            that.renderer.render(that.scene, that.camera);
+
+            for (var i = 0; i < that.objNum; i++) {
+                let value = frequencyData[i * offset] / 10;
+
+                value = value < 2 ? 2 : value;
+                that.objArray[i].scale.y = value;
+                that.objArray[i].scale.z = value;
+                that.objArray[i].scale.x = value * 0.1;
+
+            }
+        }
+
+        renderFrame();
+    };
+
+
+
+    /* harmony default export */ __webpack_exports__["a"] = (Visualizer);
 
 
 
@@ -44688,8 +44653,7 @@ Visualizer.prototype.processAudio = function() {
 
 
 
-//bottom of file
-
+    //bottom of file
 
 /***/ }),
 /* 5 */
