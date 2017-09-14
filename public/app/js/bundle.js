@@ -44387,7 +44387,7 @@ function objectFactory(_this, scene) {
         visualizer.objArray[i] = assignment;
         let thisObject = visualizer.objArray[i];
 
-        thisObject.position.set(((i - visualizer.objNum) * 50.3 + (window.innerWidth / 0.65)), -165, (5 * visualizer.objNum));
+        thisObject.position.set(((i - visualizer.objNum) * 50.3 + (window.innerWidth / 0.50)), -165, (5 * visualizer.objNum));
 
         let that = visualizer;
 
@@ -44530,7 +44530,6 @@ const visualizerTypes = {
 
         this.scene = new __WEBPACK_IMPORTED_MODULE_2_three__["Scene"]();
 
-
         let HEIGHT = window.innerHeight;
         let WIDTH = window.innerWidth;
 
@@ -44556,20 +44555,8 @@ const visualizerTypes = {
         const l2 = new __WEBPACK_IMPORTED_MODULE_2_three__["HemisphereLight"](0xffffbb, 0.9);
         this.scene.add(l2);
        
-
-        const pointLight = new __WEBPACK_IMPORTED_MODULE_2_three__["PointLight"](0xffffbb, 1);
-        // this.scene.add(pointLight);
-
-        const directLight = new __WEBPACK_IMPORTED_MODULE_2_three__["DirectionalLight"](0xffffbb, 0.9);
-        // this.scene.add(directLight);
-
         const hemiLight = new __WEBPACK_IMPORTED_MODULE_2_three__["HemisphereLight"](0xffffff, 0x080820, 1);
         this.scene.add(hemiLight);
-
-        // this.controls = new OrbitControls(this.camera);
-        // controls.update();
-
-        let that = this;
 
     };
 
@@ -44617,12 +44604,15 @@ const visualizerTypes = {
         var theta = 0;
 
         function renderFrame() {
-
+            //camera panning
             theta += 0.1;
             that.camera.position.x = radius * Math.sin(__WEBPACK_IMPORTED_MODULE_2_three__["Math"].degToRad(theta / 2));
             that.camera.position.y = radius * Math.sin(__WEBPACK_IMPORTED_MODULE_2_three__["Math"].degToRad(theta / 10));
             that.camera.lookAt(that.objArray[30].position);
+
             requestAnimationFrame(renderFrame);
+
+            //audio response handling
             that.analyser.getByteFrequencyData(frequencyData);
             const offset = Math.round(frequencyData.length / that.objNum / 3);
             that.renderer.render(that.scene, that.camera);

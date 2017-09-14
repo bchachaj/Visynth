@@ -18,7 +18,7 @@ function objectFactory(_this, scene) {
         visualizer.objArray[i] = assignment;
         let thisObject = visualizer.objArray[i];
 
-        thisObject.position.set(((i - visualizer.objNum) * 50.3 + (window.innerWidth / 0.65)), -165, (5 * visualizer.objNum));
+        thisObject.position.set(((i - visualizer.objNum) * 50.3 + (window.innerWidth / 0.50)), -165, (5 * visualizer.objNum));
 
         let that = visualizer;
 

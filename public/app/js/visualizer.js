@@ -24,7 +24,6 @@
 
         this.scene = new THREE.Scene();
 
-
         let HEIGHT = window.innerHeight;
         let WIDTH = window.innerWidth;
 
@@ -50,20 +49,8 @@
         const l2 = new THREE.HemisphereLight(0xffffbb, 0.9);
         this.scene.add(l2);
        
-
-        const pointLight = new THREE.PointLight(0xffffbb, 1);
-        // this.scene.add(pointLight);
-
-        const directLight = new THREE.DirectionalLight(0xffffbb, 0.9);
-        // this.scene.add(directLight);
-
         const hemiLight = new THREE.HemisphereLight(0xffffff, 0x080820, 1);
         this.scene.add(hemiLight);
-
-        // this.controls = new OrbitControls(this.camera);
-        // controls.update();
-
-        let that = this;
 
     };
 
@@ -111,12 +98,15 @@
         var theta = 0;
 
         function renderFrame() {
-
+            //camera panning
             theta += 0.1;
             that.camera.position.x = radius * Math.sin(THREE.Math.degToRad(theta / 2));
             that.camera.position.y = radius * Math.sin(THREE.Math.degToRad(theta / 10));
             that.camera.lookAt(that.objArray[30].position);
+
             requestAnimationFrame(renderFrame);
+
+            //audio response handling
             that.analyser.getByteFrequencyData(frequencyData);
             const offset = Math.round(frequencyData.length / that.objNum / 3);
             that.renderer.render(that.scene, that.camera);
