@@ -1,7 +1,7 @@
 ### Visynth
 
 ### 3D Audio Visualization
-This project takes advantage of the Web Audio API to render three dimensional animations driven by audio frequencies. Three dimensional animations created by use of Three.js, driven by the level of sound frequency supplied by the music. 
+This project takes advantage of the Web Audio API to render three dimensional animations in response to music. Three dimensional animations created by use of Three.js, driven by the level of sound frequency supplied by the music. 
 
 ### Functionality
 
