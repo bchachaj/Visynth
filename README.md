@@ -1,30 +1,31 @@
 ### Visynth
 
+
 Live Link: https://visynth-b57cd.firebaseapp.com
 
-### 3D Audio Visualization
-This project takes advantage of the Web Audio API to render three dimensional animations driven by audio frequencies. Three dimensional animations created by use of Three.js
+### 3D Audio Visualization: 
 
-### Functionality
+Taking advantage of the Web Audio API to render three dimensional animations driven by audio frequencies. Three dimensional animations created by use of Three.js by mapping the frequencies into segments, and interpreting the value change at any given time into a 3D representation.
 
-Three easy steps to get started:
+### Functionality:
 
-- [ ] Navigate to folder in your terminal
+Two easy steps to get started:
+
+- [ ] Navigate to the 'public' folder in your terminal
 - [ ] Run 'npm start'
 
 
-### Architecture and Technologies
+### How it's built:
 
-This project is implemented with the following technologies:
+This project is implemented with the following:
 
 - `JavaScript` for game logic,
 - `Three.js` for 3D modeling,
 - `Webpack` to bundle js files.
-- `CSS` for styling
 
 
-
-### TBD:
+### TODO:
 
 - Incorporate an environmental effect like gravity on the audio-driven objects
-- Allow user to control camera via mouse
+- Allow user to control camera via mouse (Orbit Controls)
+-User file upload
