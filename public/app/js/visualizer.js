@@ -48,7 +48,7 @@
         this.scene.add(light);
         const l2 = new THREE.HemisphereLight(0xffffbb, 0.9);
         this.scene.add(l2);
-       
+
         const hemiLight = new THREE.HemisphereLight(0xffffff, 0x080820, 1);
         this.scene.add(hemiLight);
 
@@ -65,8 +65,8 @@
 
         const factory = (function() {
             viewFactory(that, _addtoscene);
-
         }).bind(this);
+
         factory();
     };
 

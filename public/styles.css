@@ -70,12 +70,13 @@ h1 {
     }
 
     audio::-webkit-media-controls-play-button {
-        background: none;
+        /* background: white; */
         color: white;
+        border: 2px solid white;
     }
 
-    audio::-webkit-media-controls-play-button>* {
-        background: white;
+    audio::-webkit-media-controls-play-button > * {
+        /* background: white; */
         color: white;
     }
 
@@ -139,7 +140,7 @@ h1 {
   font-family: 'Bungee Hairline', cursive;
   color: lightblue;
   font-size: 12px;
-  
+
 }
 a.credit {
   font-size: 16px;
